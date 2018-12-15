@@ -1,0 +1,12 @@
+/**
+* @copyright Copyright (c) 2016 www.magebuzz.com
+*/
+.magebuzz-social {
+	display:block;
+	width:100%;
+}
+	.magebuzz-social .social-button {
+		display:inline-block;
+		vertical-align:top;
+		margin-right:5px;
+	}

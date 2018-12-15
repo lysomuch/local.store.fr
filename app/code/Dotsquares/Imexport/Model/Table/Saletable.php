@@ -1,0 +1,75 @@
+<?php
+namespace Dotsquares\Imexport\Model\Table;
+
+class Saletable extends \Magento\Framework\model\AbstractModel
+{
+    public function getSalesTable()
+    {
+        $table = array();
+        $table =   array(
+            'increment_id',
+            'customer_email',
+            'customer_firstname',
+            'customer_lasttname',
+            'customer_prefix',
+            'customer_middlename',
+            'customer_suffix',
+            'taxvat',
+            'created_at',
+            'updated_at',
+            'invoice_created_at',
+            'shipment_created_at',
+            'creditmemo_created_at',
+            'tax_amount',
+            'base_tax_amount',
+            'discount_amount',
+            'base_discount_amount',
+            'shipping_tax_amount',
+            'base_shipping_tax_amount',
+            'base_to_global_rate',
+            'base_to_order_rate',
+            'store_to_base_rate',
+            'store_to_order_rate',
+            'subtotal_incl_tax',
+            'base_subtotal_incl_tax',
+            'coupon_code',
+            'shipping_incl_tax',
+            'base_shipping_incl_tax',
+            'shipping_method',
+            'shipping_amount',
+            'subtotal',
+            'base_subtotal',
+            'grand_total',
+            'base_grand_total',
+            'base_shipping_amount',
+            'adjustment_positive',
+            'adjustment_negative',
+            'refunded_shipping_amount',
+            'base_refunded_shipping_amount',
+            'refunded_subtotal',
+            'base_refunded_subtotal',
+            'refunded_tax_amount',
+            'base_refunded_tax_amount',
+            'refunded_discount_amount',
+            'base_refunded_discount_amount',
+            'store_id',
+            'order_status',
+            'order_state',
+            'hold_before_state',
+            'hold_before_status',
+            'store_currency_code',
+            'base_currency_code',
+            'order_currency_code',
+            'total_paid',
+            'base_total_paid',
+            'is_virtual',
+            'total_qty_ordered',
+            'remote_ip',
+            'total_refunded',
+            'base_total_refunded',
+            'total_canceled',
+            'total_invoiced'
+        );
+        return $table;
+    }
+}

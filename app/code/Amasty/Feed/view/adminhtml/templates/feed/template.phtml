@@ -1,0 +1,50 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Feed
+ */
+?>
+<?= $block->getChildHtml('amfeed_feed_grid'); ?>
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        'use strict';
+
+        // @see https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript#answer-30810322
+        function fallbackCopyTextToClipboard(text) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            var result = false;
+            try {
+                result = document.execCommand('copy');
+            } catch (e) {}
+
+            document.body.removeChild(textArea);
+            return result;
+        }
+
+        $(document).on('click', '.amasty-copy-on-clipboard-button', function () {
+            var $button = $(this);
+            var $text = $button.parent().find(".amasty-copy-on-clipboard-text");
+            var result = fallbackCopyTextToClipboard($text.html());
+
+            if (result) {
+                $button.html('<?= __('Copied'); ?>');
+            } else {
+                $button.html('<?= __('Error'); ?>');
+            }
+
+            setTimeout(function () {
+                $button.html('<?= __('Copy'); ?>');
+            }, 3000);
+
+            return false;
+        });
+    });
+</script>

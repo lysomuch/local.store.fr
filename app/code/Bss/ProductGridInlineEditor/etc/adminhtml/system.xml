@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+* BSS Commerce Co.
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the EULA
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://bsscommerce.com/Bss-Commerce-License.txt
+*
+* @category   BSS
+* @package    Bss_ProductGridInlineEditor
+* @author     Extension Team
+* @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+* @license    http://bsscommerce.com/Bss-Commerce-License.txt
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="bss" translate="label" sortOrder="300">
+            <label>Bss Commerce</label>
+        </tab>
+        <section id="product_grid_inline_editor" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Product Grid Inline Editor</label>
+            <tab>bss</tab>
+            <resource>Bss_ProductGridInlineEditor::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="1">
+                <label>General Options</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Version 1.0.3]]></comment>
+                </field>
+                <field id="type_allow" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Allow Editing Content of Input Types </label>
+                    <source_model>Bss\ProductGridInlineEditor\Model\Config\Source\TypeAllow</source_model>
+                    <can_be_empty>0</can_be_empty>
+                    <comment><![CDATA[Multiple select input types that you want to allow editing. If you choose to allow editing "Date" input type, the default format date in the product grid will be mm/dd/yyyy.]]></comment>
+                </field>
+                <field id="mass_edit" type="select" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Edit Multiple Rows</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[]]></comment>
+                </field>
+                <field id="single_edit_filed" type="select" translate="label" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Edit Single Cell</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

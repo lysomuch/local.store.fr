@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/kingdee/order" method="GET">
+        <service class="Silk\Kingdee\Api\OrderInformationInterface" method="getOrder"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/kingdee/orderbydate/:start/:end" method="GET">
+        <service class="Silk\Kingdee\Api\OrderInformationInterface" method="getOrderByDate"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/kingdee/stock" method="GET">
+        <service class="Silk\Kingdee\Api\ProductStockInterface" method="getAllProductStock"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

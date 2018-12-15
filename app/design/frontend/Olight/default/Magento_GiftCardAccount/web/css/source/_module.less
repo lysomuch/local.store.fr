@@ -1,0 +1,96 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    .giftcard-account {
+        .please-wait {
+            display: none;
+        }
+
+        .form-giftcard-redeem {
+            .giftcard.info {
+                margin-bottom: @indent__l;
+            }
+        }
+    }
+
+    .opc-wrapper {
+
+        .form-giftcard-account {
+            .lib-vendor-prefix-display();
+            justify-content: space-between;
+            .payment-option-inner{
+                width:59%
+            }
+            input.input-text{
+                height: 50px;
+                line-height:50px;
+            }
+            .secondary{
+                margin-left: 20px
+            }
+            .actions-toolbar{
+                 .action{
+                    font-size: unit(@font-size-unit-ratio * 1.8, px);
+                    font-weight: @font-weight__regular;
+                     background: @button-primary__hover__background;
+                     border: none;
+                     color:@color-white;
+                     line-height:50px;
+                     -webkit-border-radius:0;
+                     -moz-border-radius:0;
+                     border-radius:0;
+                     padding: 0 20px
+                }
+            }
+            .field {
+                margin: 0 0 @indent__base;
+
+                .label {
+                    &:extend(.abs-visually-hidden all);
+                }
+            }
+        }
+        .giftcard-account-info {
+            margin: 0 0 @indent__base;
+
+            .giftcard-account-number {
+                margin: 0 0 @indent__s;
+            }
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__980) {
+  .opc-wrapper .form-giftcard-account .payment-option-inner{
+     width: 43%
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+  .opc-wrapper .form-giftcard-account .actions-toolbar{
+    .primary, .secondary{
+      display: inline-block;
+    }
+  }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+  .opc-wrapper{
+    .form-giftcard-account .payment-option-inner{
+      width: auto;
+    }
+  }
+  .opc-wrapper .form-giftcard-account {
+    display: block;
+    .actions-toolbar{
+      text-align: right;
+    }
+  }
+}

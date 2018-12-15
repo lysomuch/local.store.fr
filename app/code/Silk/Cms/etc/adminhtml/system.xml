@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="cms" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Content Management</label>
+            <group id="header_single_row_text" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header Single Row Text</label>
+                <field id="shopping_tips" translate="label comment" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Shopping Tips</label>
+                    <validate>text</validate>
+                </field>
+            </group>
+            <group id="footer_social_icon_link" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Footer Social Icon Link</label>
+                <field id="facebook" translate="label comment" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Facebook</label>
+                    <validate>text</validate>
+                </field>
+                <field id="twitter" translate="label comment" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Twitter</label>
+                    <validate>text</validate>
+                </field>
+                <field id="google_plus" translate="label comment" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Google+</label>
+                    <validate>text</validate>
+                </field>
+                <field id="youtobe" translate="label comment" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Youtobe</label>
+                    <validate>text</validate>
+                </field>
+                <field id="instagram" translate="label comment" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Instagram</label>
+                    <validate>text</validate>
+                </field>
+            </group>
+
+            <group id="header_timer" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header Timer</label>
+                <field id="timer_enable" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Timer Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="timer_begin_date" translate="label comment" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Timer Begin Date</label>
+                    <validate>text</validate>
+                    <comment>2018-12-25 10:00:00</comment>
+                </field>
+                <field id="timer_end_date" translate="label comment" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Timer End Date</label>
+                    <validate>text</validate>
+                    <comment>2018-12-25 10:00:00</comment>
+                </field>
+                <field id="timer_msg" translate="label comment" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Timer Message</label>
+                    <validate>text</validate>
+                    <comment>Show Timer Message</comment>
+                </field>
+            </group>
+            
+        </section>
+    </system>
+</config>

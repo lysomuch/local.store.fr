@@ -1,0 +1,30 @@
+<?php
+/** @var $block \Silk\Catalog\Block\Product\Accessories */
+/** @var $item \Magento\Catalog\Model\Product */
+?>
+<?php if (count($block->getUpSellProduct())): ?>
+
+    <div class="btn-title"><?php echo __('Product Accessories') ?></div>
+    <div class="accessories_product">
+        <ul>
+            <?php foreach ($block->getUpSellProduct() as $item): ?>
+                <?php $productUrl = $item->getProductUrl() ?>
+                <li>
+                    <input type="checkbox" value="<?php echo $item->getId() ?>" name="accessories[<?php echo $item->getId() ?>][id]">
+                    <a href="<?php echo $productUrl ?>" target="view_window"><img src="<?php echo $block->getProductImage($item) ?>" alt="<?php echo $item->getName() ?>" /></a>
+                    <div class="item-info">
+                        <a href="<?php echo $productUrl ?>" target="view_window"><span class="accessories-product-name"><?php echo $item->getName() ?></span></a>
+                        <div class="price-box"><?php echo $block->getProductPrice($item); ?></div>
+                    </div>
+
+                    <div class="control qty">
+                        <i class="fa fa-plus add_more"></i>
+                        <input type="number" value="1" min="1" name="accessories[<?php echo $item->getId() ?>][qty]">
+                        <i class="fa fa-minus del_less"></i>
+                    </div>
+
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>

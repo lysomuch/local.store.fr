@@ -1,0 +1,86 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php if ($detailedInfoGroup = $block->getGroupChildNames('detailed_info', 'getChildHtml')):?>
+    <div class="product info detailed">
+        <?php $layout = $block->getLayout();
+        $newPriority = $new_priority = array();
+        foreach ($detailedInfoGroup as $name){
+            $alias = $layout->getElementAlias($name);
+            $priority = $block->getChildData($alias,'priority') ? $block->getChildData($alias,'priority') : '10';
+            array_push($newPriority, array($name, $priority));
+        }
+
+        // Sort array by priority
+        usort($newPriority, function($a, $b) {
+            return $a['1'] <=> $b['1'];
+        });
+
+        //refactor array
+        foreach($newPriority as $item) {
+            $new_priority[] = $item[0];
+        }
+        ?>
+        <div class="proudct-infor-tab">
+            <ul class="product-main-infor-box swiper-wrapper">
+                <?php foreach ($new_priority as $name):?>
+                    <?php
+                    $html = $layout->renderElement($name);
+                    if (!trim($html)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                    $label = $block->getChildData($alias, 'title');
+                    ?>
+                    <li class="data item title"
+                        aria-labeledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
+                        data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */ $alias ?>">
+                        <?= /* @escapeNotVerified */ $label ?>
+                    </li>
+                <?php endforeach;?>
+            </ul>
+        </div>
+        <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
+            <?php foreach ($new_priority as $name):?>
+                <?php
+                $html = $layout->renderElement($name);
+                if (!trim($html)) {
+                    continue;
+                }
+                $alias = $layout->getElementAlias($name);
+                $label = $block->getChildData($alias, 'title');
+                ?>
+
+                <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content">
+                    <?= /* @escapeNotVerified */ $html ?>
+                </div>
+            <?php endforeach;?>
+        </div>
+
+        <div class="product-main-infor-box">
+            <div class="keywords-box">
+                <?php
+                    $keywordsList = [];
+                    $keywords =  $block->getProduct()->getData('keywords');
+                    if($keywords) {
+                        $keywordsList = explode(',', $keywords);
+                    }
+                    foreach($keywordsList as $keyword) :
+                        $keyword = trim($keyword);
+                        $query = ['q' => $keyword];
+                        $url = $block->getUrl('catalogsearch/result/', ['_current' => false, '_use_rewrite' => false, '_query' => $query]);
+                ?>
+                    <?php if ($keyword): ?>
+                        <a href="<?=$url ?>"><?=$keyword ?></a>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

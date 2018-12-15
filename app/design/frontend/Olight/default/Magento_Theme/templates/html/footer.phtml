@@ -1,0 +1,78 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+/** @var \Magento\Framework\App\Config\ScopeConfigInterface */
+$_scopeConfig = $objectManager->get('\Magento\Framework\App\Config\ScopeConfigInterface');
+$scope_stores = \Magento\Store\Model\ScopeInterface::SCOPE_STORES;
+?>
+
+<div class="footer_links">
+    <?php echo $this->getLayout()
+        ->createBlock('Magento\Cms\Block\Block')
+        ->setBlockId('footer_links')
+        ->toHtml(); ?>
+
+    <div class="links">
+        <div class="block-title"><strong><?= $block->escapeHtml(__('Newsletter')) ?></strong></div>
+        <?php echo $block->getChildHtml('subscribe') ?>
+    </div>
+</div>
+<div class="footer-bottom">
+    <div class="share-box">
+        <a href="<?=$_scopeConfig->getValue('cms/footer_social_icon_link/facebook', $scope_stores); ?>" target="_blank"><span class="fa fa-facebook fa-lg" style="color:white;"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="<?=$_scopeConfig->getValue('cms/footer_social_icon_link/twitter', $scope_stores); ?>" target="_blank"><span class="fa fa-twitter fa-lg" style="color:white;"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="<?=$_scopeConfig->getValue('cms/footer_social_icon_link/google_plus', $scope_stores); ?>" target="_blank"><span class="fa fa-google-plus fa-lg" style="color:white;"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="<?=$_scopeConfig->getValue('cms/footer_social_icon_link/youtobe', $scope_stores); ?>" target="_blank"><span class="fa fa-youtube fa-lg" style="color:white;"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="<?=$_scopeConfig->getValue('cms/footer_social_icon_link/instagram', $scope_stores); ?>" target="_blank"><span class="fa fa-instagram fa-lg" style="color:white;"></span></a>
+    </div>
+    <?php echo $block->getChildHtml('copyright') ?>
+</div>
+<div class="right-float expand">
+    <ul class="right-items">
+        <li class="facebook-contact item hideFloat">
+            <div class="icon-box">
+                <span class="fa fa-facebook"></span>
+            </div>
+            <div class="floatbox facebook-content"></div>
+        </li>
+	  
+        <li class="address item hideFloat">
+            <div class="icon-box">
+               <a href="https://www.instagram.com/olight_france/" class="fa fa-instagram" style="color:#fff;padding:10px 0" target="_blank" >&nbsp;</a>
+            </div>
+        </li>
+        <li class="contact-us item hideFloat">
+            <div class="icon-box">
+                <span class="fa fa-envelope"></span>
+            </div>
+            <div class="floatbox contactUsForm"></div>
+        </li>
+       
+        <li class="toTop item">
+            <div class="icon-box">
+                <span class="icon"></span>
+            </div>
+        </li>
+
+    </ul>
+    <div class="right-gather">
+        <span class="fa fa-angle-right"></span>
+    </div>
+</div>
+<script type="text/javascript">
+ require(['jquery'],function($) {
+   var navOffset=$(".page-header").offset().top;  
+        $(window).scroll(function(){  
+        var scrollPos=$(window).scrollTop();  
+		if(scrollPos >= 134){  
+		   $(".page-header").fadeIn().addClass("topfixed");  
+
+          }else{ 
+		   $(".page-header").removeClass("topfixed");  
+		  
+        }  
+   });  
+});  
+ </script> 
+
+
+

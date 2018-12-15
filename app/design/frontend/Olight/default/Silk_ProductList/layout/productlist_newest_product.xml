@@ -1,0 +1,11 @@
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <attribute name="class" value="page-products"/>
+        <attribute name="class" value="catalog-category-view"/>
+        <referenceContainer name="root">
+
+
+        </referenceContainer>
+    </body>
+</page>

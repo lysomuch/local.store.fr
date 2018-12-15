@@ -1,0 +1,36 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+/** @var \Silk\FacebookWallPost\Model\Source\WallPosts $wallPostModel */
+$wallPostModel = $objectManager->get('\Silk\FacebookWallPost\Model\Source\WallPosts');
+$postList = $wallPostModel->getWallPosts();
+$pageInfo = $wallPostModel->getPageInfo();
+?>
+
+<div class="flash_unstart_live">
+    <div class="position-content">
+        <div class="live-tit">
+            <div class="head-icon">
+                <a href="<?=$pageInfo['page_url'] ?>" title="<?=$pageInfo['name'] ?>"  target="_blank">
+                    <span class="olight-image"> <img src="<?=$pageInfo['picture'] ?>" title="<?=$pageInfo['name'] ?>" /> </span>
+                </a>
+            </div>
+            <div class="head-info">
+                <a href="<?=$pageInfo['page_url'] ?>" title="<?=$pageInfo['name'] ?>"  target="_blank">
+                    <p class="live-name"><?=$pageInfo['name'] ?></p>
+                </a>
+                <div class="likes"><i class="fa fa-heart"></i> <?=$pageInfo['fan_count'] ?> Likes</div>
+            </div>
+        </div>
+        <div class="live-list">
+            <?php foreach($postList as $item): $timestamp = strtotime($item['created_time']); ?>
+            <a class="live-item" href="<?=$pageInfo['page_url'] ?>" title="<?=__($item['message']) ?>" target="_blank">
+                <div class="date-info"><span class="month"><?php echo date('M', $timestamp) ?></span> <span class="day"><?php echo substr($item['created_time'], 8, 2) ?></span></div>
+                <div class="item-right">
+                    <p class="live-review"><?=__($item['message']) ?></p>
+                    <p class="location"><?php echo date('D h:i A', $timestamp) ?> EDT · <?=$pageInfo['name'] ?> · Marietta, GA, United States</p>
+                </div>
+            </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>

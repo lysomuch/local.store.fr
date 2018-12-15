@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<a href="<?= $block->getUrl('customer/account') ?>" class="backToDashboard "><i class="fa fa-angle-left"></i>back to dashboard</a>
+<div class="block <?= /* @escapeNotVerified */ $block->getBlockCss() ?>">
+    <div class="title <?= /* @escapeNotVerified */ $block->getBlockCss() ?>-title" data-mage-init='{"toggleAdvanced": {"toggleContainers": "#<?= /* @escapeNotVerified */ $block->getBlockCss() ?>", "selectorsToggleClass": "active"}}'>
+        <strong><?= /* @escapeNotVerified */ $block->getBlockTitle() ?></strong>
+    </div>
+    <div class="content <?= /* @escapeNotVerified */ $block->getBlockCss() ?>-content" id="<?= /* @escapeNotVerified */ $block->getBlockCss() ?>">
+        <?= $block->getChildHtml() ?>
+    </div>
+</div>

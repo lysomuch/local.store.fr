@@ -1,0 +1,41 @@
+<?php
+	$enableCatalog = $this->getEnableCatalog();
+	$timerCatalogId = $this->getTimerCatalogId();
+	$currentCatalogId = $this->getRequest()->getParam('id');
+	$ajaxTimer = false;
+	if ((1 == $enableCatalog) and ($timerCatalogId == $currentCatalogId)) {
+		$ajaxTimer = true;
+	}
+?>
+<?php if ($ajaxTimer) : ?>
+	<?php if ($infoDisplayCatalog = $block->getInfoDisplay()) : ?>
+		<?php $k = $block->getRandomKey(); ?>
+		<input type="hidden" class="product-id-bss-time" value="<?= $infoDisplayCatalog['product_id'] . $k ?>"/>
+		<input type="hidden" id="time-product-bss-<?= $infoDisplayCatalog['product_id'] . $k ?>"/>
+		<div class="message-catalog-page-bss message-bss-<?= $infoDisplayCatalog['product_id'] . $k ?> c-tit"
+			style="<?= $infoDisplayCatalog['font_size'] ?>; <?= $infoDisplayCatalog['color'] ?>">
+			<?= $infoDisplayCatalog['message'] ?>
+		</div >
+		<span class="timer-bss-style-<?= $infoDisplayCatalog['style'] ?> timer-countdown-bss-<?= $infoDisplayCatalog['product_id'] . $k ?>"></span>
+		<div class='discount-bss-time-countdown'>
+			<p>
+			<span style="<?= $infoDisplayCatalog['corlorMessSaleValue'] ?>; <?= $infoDisplayCatalog['fontSizeMessSaleValue'] ?>"><?= $infoDisplayCatalog['messSaleValue'] ?></span>&nbsp;<span class="sale-value"><?= $infoDisplayCatalog['sale_value'] ?></span>
+			</p>
+			<p>
+			<span style="<?= $infoDisplayCatalog['corlorMessSalePercent'] ?>;<?= $infoDisplayCatalog['fontSizeMessSalePercent'] ?>"><?= $infoDisplayCatalog['messSalePercent'] ?></span> (<?= $infoDisplayCatalog['percent_discount'] ?>)
+			</p>
+		</div>
+		<script type="text/x-magento-init">
+			{
+				"#time-product-bss-<?= $infoDisplayCatalog['product_id'] . $k ?>":{
+					"Bss_TimeCountdown/js/timer":{
+						"selector": ".timer-countdown-bss-<?= $infoDisplayCatalog['product_id'] . $k ?>",
+						"productId": "<?= $infoDisplayCatalog['product_id'] ?>",
+						"ajaxUrl": "<?= $block->getUrl('timecountdown/ajax/timer') ?>",
+						"type": "catalog"
+					}
+				}
+			}
+		</script>
+	<?php endif; ?>
+<?php endif; ?>

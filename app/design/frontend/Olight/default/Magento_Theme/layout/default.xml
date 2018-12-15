@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.panel.wrapper">
+            <referenceContainer name="header.panel" remove="true"/>
+            <block class="Magento\Framework\View\Element\Template" name="header_panel" as="header_panel"
+                   template="Magento_Theme::html/panel_header.phtml">
+                <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" template="Magento_Store::switch/stores.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" name="skip_to_content"
+                       template="Magento_Theme::html/skip.phtml">
+                    <arguments>
+                        <argument name="target" xsi:type="string">contentarea</argument>
+                        <argument name="label" translate="true" xsi:type="string">Skip to Content</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Store\Block\Switcher" name="store_language" as="store_language"
+                       template="Magento_Store::switch/languages.phtml"/>
+                <block class="Magento\Customer\Block\Account\Navigation" name="top.links">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">header links</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="header-wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="olight.nav"
+                   template="Magento_Theme::html/nav.phtml" after="logo"/>
+        </referenceContainer>
+        <!--<move element="navigation.sections" destination="header-wrapper" after="logo" />-->
+        <referenceContainer name="footer">
+            <block class="Magento\Framework\View\Element\Template" name="olight.footer" template="Magento_Theme::html/footer.phtml" />
+        </referenceContainer>
+
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="navigation.sections" remove="true"/>
+
+        <move element="minicart" destination="header_panel"/>
+        <move element="footer_links" destination="olight.footer"/>
+        <move element="store_switcher" destination="olight.footer"/>
+        <move element="form.subscribe" destination="olight.footer"/>
+        <move element="copyright" destination="olight.footer"/>
+		<referenceBlock name="catalog.compare.sidebar" remove="true"/>
+		<referenceBlock name="sale.reorder.sidebar" remove="true"/>
+		<referenceBlock name="multiple-wishlist_sidebar" remove="true"/>	
+    </body>
+</page>

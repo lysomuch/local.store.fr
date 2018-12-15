@@ -1,0 +1,410 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Bss Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   Bss
+ * @package    Bss_TimeCountdown
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 Bss Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab  id="bss"  translate="label"  sortOrder="300">
+            <label><![CDATA[Bss  Commerce]]></label>
+        </tab>
+        <section id="timeCountdown" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label><![CDATA[Special Price Time Countdown]]></label>
+            <tab>bss</tab>
+            <resource>Bss_TimeCountdown::TimeCountdown_config</resource>
+            <group id="enable_module_group" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Enable Special Price Time Countdown Extension]]></label>
+                <field id="enable_module_field" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Enable]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Version 1.0.4]]></comment>
+                </field>
+            </group>
+
+            <group id="message_sale" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Promotion Content</label>
+
+                <field id="enable_message_sale_value" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Promotion Message</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="messSaleValue" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text</label>
+                    <depends>
+                        <field id="enable_message_sale_value">1</field>
+                    </depends>
+                </field>
+
+                <field id="colorMessSaleValue" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color</label>
+                    <validate>validate-no-html-tags</validate>
+                    <frontend_model>Bss\TimeCountdown\Model\Config\Source\Color</frontend_model>
+                    <depends>
+                        <field id="enable_message_sale_value">1</field>
+                    </depends>
+                </field>
+
+
+                <field id="fontSizeMessSaleValue" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Size</label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <depends>
+                        <field id="enable_message_sale_value">1</field>
+                    </depends>
+                </field>
+
+
+                <field id="enable_message_sale_percent" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Promotion Discount</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="messSalePercent" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text</label>
+                    <depends>
+                        <field id="enable_message_sale_percent">1</field>
+                    </depends>
+                </field>
+
+                <field id="colorMessSalePercent" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color</label>
+                    <validate>validate-no-html-tags</validate>
+                    <frontend_model>Bss\TimeCountdown\Model\Config\Source\Color</frontend_model>
+                    <depends>
+                        <field id="enable_message_sale_percent">1</field>
+                    </depends>
+                </field>
+
+                <field id="fontSizeMessSalePercent" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Size </label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <depends>
+                        <field id="enable_message_sale_percent">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="startTime" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+
+                <label><![CDATA[Start Time Countdown]]></label>
+
+                <field id="enable_start" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Enable Start Time Countdown]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="numDayStart" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Display X Days Before]]></label>
+                    <comment><![CDATA[Display the Start Time Countdown X days before the starting date of special price]]></comment>
+                    <validate>required-entry validate-number validate-greater-than-zero</validate>
+                </field>
+
+                <field id="displayCatalogPageStart" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Display on Catalog Page]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="catalogStyleTimeStart" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Time Countdown Style]]></label>
+                    <source_model>Bss\TimeCountdown\Model\Config\Source\StyleDisplay</source_model>
+                    <depends>
+                        <field id="displayCatalogPageStart">1</field>
+                    </depends>
+                </field>
+
+                <field id="isCatalogMessStart" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Use Time Countdown Message]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="displayCatalogPageStart">1</field>
+                    </depends>
+                </field>
+
+                <field id="catalogPageMessStart" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Time Countdown Message]]></label>
+                    <validate>validate-no-html-tags</validate>
+                    <depends>
+                        <field id="isCatalogMessStart">1</field>
+                        <field id="displayCatalogPageStart">1</field>
+                    </depends>
+                </field>
+
+                <field id="colorCatalogMessStart" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Color of Message]]></label>
+                    <validate>validate-no-html-tags</validate>
+                    <frontend_model>Bss\TimeCountdown\Model\Config\Source\Color</frontend_model>
+                    <depends>
+                        <field id="isCatalogMessStart">1</field>
+                        <field id="displayCatalogPageStart">1</field>
+                    </depends>
+                </field>
+
+                <field id="fontSizeCatalogMessStart" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Font Size of Message]]></label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <depends>
+                        <field id="isCatalogMessStart">1</field>
+                        <field id="displayCatalogPageStart">1</field>
+                    </depends>
+                </field>
+
+                <field id="displayProductPageStart" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Display on Product Page]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="productStyleTimeStart" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Time Countdown Style]]></label>
+                    <validate>validate-no-html-tags</validate>
+                    <source_model>Bss\TimeCountdown\Model\Config\Source\StyleDisplay</source_model>
+                    <depends>
+                        <field id="displayProductPageStart">1</field>
+                    </depends>
+                </field>
+
+                <field id="isProductMessStart" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Use Time Countdown Message]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="displayProductPageStart">1</field>
+                    </depends>
+                </field>
+
+                <field id="productPageMessStart" translate="label" type="text" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Time Countdown Message]]></label>
+                    <validate>validate-no-html-tags</validate>
+                    <depends>
+                        <field id="isProductMessStart">1</field>
+                        <field id="displayProductPageStart">1</field>
+                    </depends>
+                </field>
+
+                <field id="colorProductMessStart" translate="label" type="text" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Color of Message]]></label>
+                    <validate>validate-no-html-tags</validate>
+                    <frontend_model>Bss\TimeCountdown\Model\Config\Source\Color</frontend_model>
+                    <depends>
+                        <field id="isProductMessStart">1</field>
+                        <field id="displayProductPageStart">1</field>
+                    </depends>
+                </field>
+
+                <field id="fontSizeProductMessStart" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Font Size of Message]]></label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <depends>
+                        <field id="isProductMessStart">1</field>
+                        <field id="displayProductPageStart">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="endTime" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+
+                <label><![CDATA[End Time Countdown]]></label>
+
+                <field id="enable_end" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Enable End Time Countdown]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+
+                <field id="numDayEnd" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Display X Days Before]]></label>
+                    <comment><![CDATA[Display the End Time Countdown X days before the ending date of special price]]></comment>
+                    <validate>required-entry validate-number validate-greater-than-zero</validate>
+                </field>
+
+                <field id="displayCatalogPageEnd" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Display on Catalog Page]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="catalogStyleTimeEnd" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Time Countdown Style]]></label>
+                    <source_model>Bss\TimeCountdown\Model\Config\Source\StyleDisplay</source_model>
+                    <depends>
+                        <field id="displayCatalogPageEnd">1</field>
+                    </depends>
+                </field>
+
+
+                <field id="isCatalogMessEnd" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Use Time Countdown Message]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="displayCatalogPageEnd">1</field>
+                    </depends>
+                </field>
+
+                <field id="catalogPageMessEnd" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Time Countdown Message]]></label>
+                    <validate>validate-no-html-tags</validate>
+                    <depends>
+                        <field id="isCatalogMessEnd">1</field>
+                        <field id="displayCatalogPageEnd">1</field>
+                    </depends>
+                </field>
+
+                <field id="colorCatalogMessEnd" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Color of Message]]></label>
+                    <validate>validate-no-html-tags</validate>
+                    <frontend_model>Bss\TimeCountdown\Model\Config\Source\Color</frontend_model>
+                    <depends>
+                        <field id="isCatalogMessEnd">1</field>
+                        <field id="displayCatalogPageEnd">1</field>
+                    </depends>
+                </field>
+
+                <field id="fontSizeCatalogMessEnd" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Font Size of Message]]></label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <depends>
+                        <field id="isCatalogMessEnd">1</field>
+                        <field id="displayCatalogPageEnd">1</field>
+                    </depends>
+                </field>
+
+
+                <field id="displayProductPageEnd" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Display on Product Page]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="productStyleTimeEnd" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Time Countdown Style]]></label>
+                    <source_model>Bss\TimeCountdown\Model\Config\Source\StyleDisplay</source_model>
+                    <depends>
+                        <field id="displayProductPageEnd">1</field>
+                    </depends>
+                </field>
+
+
+                <field id="isProductMessEnd" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Use Time Countdown Message]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="displayProductPageEnd">1</field>
+                    </depends>
+                </field>
+
+
+                <field id="productPageMessEnd" translate="label" type="text" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Time Countdown Message]]></label>
+                    <validate>validate-no-html-tags</validate>
+                    <depends>
+                        <field id="isProductMessEnd">1</field>
+                        <field id="displayProductPageEnd">1</field>
+                    </depends>
+                </field>
+
+
+                <field id="colorProductMessEnd" translate="label" type="text" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Color of Message]]></label>
+                    <validate>validate-no-html-tags</validate>
+                    <frontend_model>Bss\TimeCountdown\Model\Config\Source\Color</frontend_model>
+                    <depends>
+                        <field id="isProductMessEnd">1</field>
+                        <field id="displayProductPageEnd">1</field>
+                    </depends>
+                </field>
+
+                <field id="fontSizeProductMessEnd" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Font Size of Message]]></label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <depends>
+                        <field id="isProductMessEnd">1</field>
+                        <field id="displayProductPageEnd">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="bss_seo" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+
+                <label>Search Engine Optimization for Promotion Page</label>
+
+                <field id="isUsePage" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Use Page promotion]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="title_page" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Promotion Page Title</label>
+                    <depends>
+                        <field id="isUsePage">1</field>
+                    </depends>
+                </field>
+
+                <field id="url_label" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Label Link</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="isUsePage">1</field>
+                    </depends>
+                </field>
+
+                 <field id="url_key" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                     <label>URL Key</label>
+                     <validate>required-entry</validate>
+                     <depends>
+                         <field id="isUsePage">1</field>
+                     </depends>
+                </field>
+
+                <field id="meta_title" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Title</label>
+                    <depends>
+                        <field id="isUsePage">1</field>
+                    </depends>
+                </field>
+
+                <field id="meta_key" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Keyword</label>
+                    <depends>
+                        <field id="isUsePage">1</field>
+                    </depends>
+                </field>
+
+                <field id="meta_desc" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Description</label>
+                    <depends>
+                        <field id="isUsePage">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="bss_catalog" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Show Timer In This Catalog]]></label>
+                <field id="enable_catalog" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Enable]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Timer Active Limit]]></comment>
+                </field>
+
+                <field id="timer_catalog_id" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Catalog ID]]></label>
+                    <depends>
+                        <field id="enable_catalog_id">1</field>
+                    </depends>
+                    <comment><![CDATA[Only Show Timer In This Catalog]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

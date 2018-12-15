@@ -1,0 +1,16 @@
+<!--@subject {{var subject}} @-->
+<!--@vars {
+"var message":"Message"
+} @-->
+{{template config_path="design/email/header_template"}}
+
+<p class="greeting">{{trans "%name," name=$recipient.name}}</p>
+<p>{{var message}}</p>
+<p>
+    {{trans
+        'If you click on my link below, you can even receive a special discount! Check it out: <a href="%refer_url">here</a>'
+
+        refer_url=$recipient.refer_url
+    |raw}}
+</p>
+{{template config_path="design/email/footer_template"}}

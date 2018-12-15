@@ -1,0 +1,107 @@
+<?php /** @var $block \Bss\ProductGridInlineEditor\Block\Adminhtml\InlineEdit */ ?>
+<?php
+	$attrs = $block->getAttrAllowEdit();
+	$symbols = $block->getCurrencySymbolsData();
+?>
+<!-- frontend type input (text, textarena, price) -->
+<script id="bss-field-text" type="text/x-magento-template">
+	<div class="admin__field-control">
+		<input class="admin__control-text <%- data.class %> <% if (data.symbol.trim() != '') { %> price-symbol <% } %>" type="<%- data.type_input %>" name="<%- data.name %>" placeholder="" id="<%- data.id %>" value="<%- data.value %>">
+		<% if (data.symbol.trim() != '') { %>
+			<label class="bss-price-symbol"><span><%- data.symbol %></span></label>
+		<% } %>
+	    <label class="admin__field-error" for="<%- data.id %>" style="display: none;"></label>
+	</div>
+</script>
+<!-- frontend type select -->
+<script id="bss-field-select" type="text/x-magento-template">
+	<div class="admin__field-control">
+		<select class="admin__control-select <%- data.class %>" name="<%- data.name %>" id="<%- data.id %>">
+			<% if (data.selected.trim() == '') { %>
+				<option value=""> </option>
+			<% } %>
+			<% _.each(data.options, function(option) { %>
+	        	<option value="<%- option.value %>" <% if (option.label.trim() == data.selected.trim()) { %>selected<% } %>>
+	        		<%- option.label %>
+	        	</option>
+	        <% }) %>
+		</select>
+	    <label class="admin__field-error" for="<%- data.id %>" style="display: none;"></label>
+	</div>
+</script>
+<!-- frontend type select multiple -->
+<script id="bss-field-select-multiple" type="text/x-magento-template">
+	<div class="admin__field-control">
+		<select multiple="" class="admin__control-multiselect" name="<%- data.name %>" id="<%- data.id %>">
+			<% if (data.selected.trim() == '') { %>
+				<option value=""> </option>
+			<% } %>
+			<% _.each(data.options, function(option) { %>
+				<% if (option.value == '') return true; %>
+	        	<option value="<%- option.value %>" data-title="<%- option.label %>" <% if (data.selected.trim().search(option.label.trim()) !== -1) { %>selected<% } %>>
+	        		<%- option.label %>
+	        	</option>
+	        <% }) %>
+		</select>
+	    <label class="admin__field-error" for="<%- data.id %>" style="display: none;"></label>
+	</div>
+</script>
+<!-- buton action edit single row  -->
+<script id="bss-row-actions" type="text/x-magento-template">
+    <tr class="data-grid-editable-row data-grid-editable-row-actions bss-edit-actions">
+    	<td>
+    		<button class="action-tertiary">
+    			<span><?php echo __('Cancel') ?></span>
+    		</button>
+    		<button class="action-primary" type="button">
+    			<span><?php echo __('Save') ?></span>
+    		</button>
+    	</td>
+    </tr>;
+</script>
+<!-- buton action edit all multiple row -->
+<script id="bss-edit-all-actions" type="text/x-magento-template">
+<div class="data-grid-info-panel bss-edit-all-actions">
+    <div class="data-grid-info-panel-actions">
+        <button class="action-tertiary" type="button">
+            <span><?= __('Cancel') ?></span>
+        </button>
+        <button class="action-primary" type="button">
+            <span><?= __('Save Edits') ?></span>
+        </button>
+    </div>
+</div>
+</script>
+<!-- message -->
+<script id="bss-messages" type="text/x-magento-template">
+	<div class="bss-message">
+	    <div class="messages">
+	    	<div class="message message-<%- data.status %> <%- data.status %>">
+	    		<% if (data.status == 'warning') { %>
+				<strong><?= __('There are') ?> <%- data.counterror %> <?= __('messages requires your attention.') ?></strong>
+            	 <?= __('Please make corrections to the errors in the table below and re-submit.') ?>
+				<% } else { %>
+	    		<div data-ui-id="messages-message-<%- data.status %>"><%- data.message %></div>
+	    		<% } %>
+	    	</div>
+		</div>
+	</div>
+</script>
+<?php if ($block->isEnabled()): ?>
+<script type="text/x-magento-init">
+	{
+        "#anchor-content": {
+            "Bss_ProductGridInlineEditor/js/grid-editor": {
+	            "attr_sets": <?php /* @escapeNotVerified */ echo $attrs['attr_sets'] ?>,
+	            "attrs_options": <?php /* @escapeNotVerified */ echo $attrs['attrs_options'] ?>,
+	            "url_save": "<?php /* @escapeNotVerified */ echo $block->getUrlSave() ?>",
+	            "url_save_multiples": "<?php /* @escapeNotVerified */ echo $block->getUrlSaveMultiples() ?>",
+	            "is_mass_edit": "<?php /* @escapeNotVerified */ echo $block->isMassEdit() ?>",
+	            "is_single_edit_field": "<?php /* @escapeNotVerified */ echo $block->isSingleEditField() ?>",
+	            "symbols": <?php /* @escapeNotVerified */ echo $symbols ?>,
+	            "priceFormat": <?php /* @escapeNotVerified */ echo json_encode($block->getPriceFormat(),JSON_FORCE_OBJECT) ?>
+        	}
+        }
+    }
+</script>
+<?php endif ?>

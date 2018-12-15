@@ -1,0 +1,45 @@
+<!--@subject {{trans "I just received a request from a dealer or wholesaler in %store_name" store_name=$store.getFrontendName()}} @-->
+<!--@vars {
+"recipient":"Recipient",
+"sender":"Sender",
+"company_name":"Company Name",
+"login_password":"Login Password",
+"contact_name":"Contact Name",
+"email":"Email",
+"website":"Website",
+"telephone":"Telephone",
+"city":"State / City",
+"bussiness_description":"Business Description",
+"flashlights_brands":"Currently sell flashlights brands",
+"sales_channels":"Sales Channels",
+"message_to_us":"Message to us"
+} @-->
+
+<p class="greeting">{{trans "Hello %name," name=$recipient}}</p>
+
+<p>{{trans "I’m %sender from %store_name. I just received a request from a dealer or wholesaler. The following is the request information" sender=$sender store_name=$store.getFrontendName()}}</p>
+
+<p>{{trans "Company Name: %company_name" company_name=$company_name}}</p>
+
+<p>{{trans "Login Password: %login_password" login_password=$login_password}}</p>
+
+<p>{{trans "Contact Name: %contact_name" contact_name=$contact_name}}</p>
+
+<p>{{trans "Email: %email" email=$email}}</p>
+
+<p>{{trans "Website: %website" website=$website}}</p>
+
+<p>{{trans "Telephone: %telephone" telephone=$telephone}}</p>
+
+<p>{{trans "State / City: %city" city=$city}}</p>
+
+<p>{{trans "Business Description: %bussiness_description" bussiness_description=$bussiness_description}}</p>
+
+<p>{{trans "Currently sell flashlights brands: %flashlights_brands" flashlights_brands=$flashlights_brands}}</p>
+
+<p>{{trans "Sales Channels: %sales_channels" sales_channels=$sales_channels}}</p>
+
+<p>{{trans "Message to us: %message_to_us" message_to_us=$message_to_us}}</p>
+
+<p>{{trans "Thank you so much and have a nice day."}}</p>
+

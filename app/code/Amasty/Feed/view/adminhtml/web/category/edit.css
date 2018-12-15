@@ -1,0 +1,3 @@
+#attribute-feed_category_mapping-container li input[type=checkbox]:checked ~ span a {
+    color: #d8d8d8;
+}

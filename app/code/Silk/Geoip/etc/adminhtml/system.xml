@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="getip" translate="label" sortOrder="500">
+            <label>Olight GeoIP</label>
+        </tab>
+        <section id="getip" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>GeoIP</label>
+            <tab>getip</tab>
+            <resource>Silk_Geoip::geoip_config</resource>
+            <group id="geoip_group" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>GeoIP Setting</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="country" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Country Code</label>
+                    <comment>Allow country to visit. Use comma to separated. Like CA,CN,US. See from: https://my.oschina.net/ganfanghua/blog/2875012</comment>
+                </field>
+                <field id="redirect" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Redict URL</label>
+                    <comment>Redirect to which url, like https://olightworld.com</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Bannerslider
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+?>
+<?php
+/** @var \Magestore\Bannerslider\Block\SliderItem $block */
+$styleSlide = $block->getSlider()->getStyleSlide();
+$slider = $block->getSlider();
+$htmlId   = $block->getFlexsliderHtmlId();
+$bannerCollection = $block->getBannerCollection();
+?>
+33333333333333333333333333333333333333
+<div>
+   <ul class="slides">
+        <?php foreach ($bannerCollection as $banner): ?>
+                    <?php if ($styleSlide == \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_TWO) : ?>
+                    <li data-thumb="<?php echo $block->getBannerImageUrl($banner) ?>">
+                        <a href="<?php echo $banner->getClickUrl() ?>" target="<?php echo $banner->getTargetValue() ?>" style="display:block;" data-mage-init='{"magestore/clickbanner": {"url": "<?php echo $this->getUrl("bannerslider/index/click") ?>", "slider_id": "<?php echo $banner->getSliderId() ?>", "banner_id": "<?php echo $banner->getId() ?>" }}' >
+                            <img alt="<?php echo $banner->getImageAlt() ?>" src="<?php echo $block->getBannerImageUrl($banner) ?>"/>
+                        </a>
+                        <?php if($banner->getCaption()): ?><div class="flex-caption"><?php echo $banner->getCaption(); ?></div><?php endif; ?>
+                    </li>
+                    <?php else :
+                    ?>
+                    <li>
+                        <a href="<?php echo $banner->getClickUrl() ?>" target="<?php echo $banner->getTargetValue() ?>" style="display:block;" data-mage-init='{"magestore/clickbanner": {"url": "<?php echo $this->getUrl("bannerslider/index/click") ?>", "slider_id": "<?php echo $banner->getSliderId() ?>", "banner_id": "<?php echo $banner->getId() ?>" }}' >
+                            <img alt="<?php echo $banner->getImageAlt() ?>"  src="<?php echo $block->getBannerImageUrl($banner) ?>"/>
+                        </a>
+                        <?php if($banner->getCaption()): ?><div class="flex-caption"><?php echo $banner->getCaption(); ?></div><?php endif; ?>
+                    </li>
+                    <?php endif; ?>
+                <?php endforeach ?>
+    </ul>
+</div>
+<?php if ($styleSlide ==  \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_THREE) :?>
+<div>
+   <ul class="slides">
+   <?php foreach ($bannerCollection as $banner) : ?>
+                    <li>
+                        <img  alt="<?php echo $banner->getImageAlt() ?>" src="<?php echo $block->getBannerImageUrl($banner) ?>" />
+                    </li>
+                <?php endforeach ?>
+    </ul>
+    <?php endif; ?>
+</div>

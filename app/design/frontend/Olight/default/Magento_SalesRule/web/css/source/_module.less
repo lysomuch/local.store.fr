@@ -1,0 +1,45 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .opc-wrapper {
+        .form-discount {
+            .lib-vendor-prefix-display();
+            .field {
+                .label {
+                    &:extend(.abs-visually-hidden all);
+                }
+            }
+            .actions-toolbar .primary{
+                margin-left: 20px;
+                &:before{
+                    display: none;
+                }
+                .action{
+                    background: @button-primary__hover__background;
+                    color: @color-white;
+                    font-weight: @font-weight__regular;
+                    border: none;
+                    font-size:  unit(@font-size-unit-ratio * 1.8, px);
+                    height: 50px;
+                    line-height:50px;
+                    text-transform: uppercase;
+                    padding: 0 20px;
+                    -webkit-border-radius:0;
+                    -moz-border-radius:0;
+                    border-radius:0;
+                    margin-right: 0;
+                }
+            }
+        }
+        .discount-code{
+            margin-top: 40px;
+        }
+    }
+}

@@ -1,0 +1,77 @@
+<?php /** @var \Silk\FlashSales\Block\CountDown $block */ ?>
+<?php if ($block->isShowFlashSales()): ?>
+    <script>
+        var startTime = '<?php echo $block->getStartTime() ?>',
+            endTime = '<?php echo $block->getEndTime() ?>';
+    </script>
+    <!--    <div class="countdown" v-if="state!='end'" v-cloak>-->
+    <div class="countdown v2" v-cloak>
+      <a class="f-box">
+            <div class="startInfo" v-if="state!='end'">
+                START AT <span v-html="startAt"></span>
+            </div>
+
+            <div class="flash-tit">FLASH SALE<p class="state" v-text="text"></p></div>
+            <div class="time-box" :class="{'time-ready': !isReady}">
+                <div id="time-number" v-if="isReady">
+
+                    <div class="falsh-day">
+                        <div class="num-box">
+                            <i></i>
+                            <i></i>
+                            <span>
+                    {{day | numDouble}}
+                </span>
+                        </div>
+                        <div class="text-box">
+                            DAY
+                        </div>
+                    </div>
+                    <span>:</span>
+                    <div class="falsh-hour">
+                        <div class="num-box">
+                            <i></i>
+                            <i></i>
+                            <span>
+                    {{hour | numDouble}}
+                </span>
+                        </div>
+                        <div class="text-box">
+                            HOUR
+                        </div>
+                    </div>
+                    <span>:</span>
+                    <div class="falsh-min">
+                        <div class="num-box">
+                            <i></i>
+                            <i></i>
+                            <span>
+                    {{minute | numDouble}}
+                </span>
+                        </div>
+                        <div class="text-box">
+                            MIN
+                        </div>
+                    </div>
+                    <span>:</span>
+                    <div class="falsh-sec">
+                        <div class="num-box">
+                            <i></i>
+                            <i></i>
+                            <span>
+                    {{seconds | numDouble}}
+                </span>
+                        </div>
+                        <div class="text-box">
+                            SEC
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="share-box">Share this awesome deal：
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox"></div>
+            </div>
+        </a>
+    </div>
+<?php endif; ?>

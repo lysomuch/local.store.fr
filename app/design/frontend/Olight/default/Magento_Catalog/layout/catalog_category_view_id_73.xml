@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+
+		  <referenceContainer name="content">
+			  <block class="Magento\Catalog\Block\Category\View" name="category.products" template="Magento_Catalog::category/products.phtml">
+			
+                <block class="Magento\Catalog\Block\Product\ListProduct" name="category.products.list" as="product_list" template="Magento_Catalog::product/list2.phtml">
+						<block class="Magento\Cms\Block\Block" name="flashsale" >
+						<arguments>
+						<argument name="block_id" xsi:type="string">flashsale</argument>
+						</arguments>
+						</block>
+                    <container name="category.product.list.additional" as="additional" />
+                    <block class="Magento\Framework\View\Element\RendererList" name="category.product.type.details.renderers" as="details.renderers">
+                        <block class="Magento\Framework\View\Element\Template" name="category.product.type.details.renderers.default" as="default"/>
+                    </block>
+                  
+                    <block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
+                        <block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="setToolbarBlockName">
+                        <argument name="name" xsi:type="string">product_list_toolbar</argument>
+                    </action>
+                </block>
+            </block>
+           
+        </referenceContainer>
+	
+        <!--<move element="category.image" destination="page.top"/>-->
+        <move element="category.description" destination="page.top"/>
+		<move element="flashsale" destination="page.top"/>
+        <!--<referenceBlock name="product_list_toolbar_pager" remove="true" />-->
+        <!--<referenceBlock name="product_list_toolbar" remove="true" />-->
+        <referenceBlock name="catalog.leftnav" remove="true" />
+		<referenceBlock name="product_list_toolbar_pager" remove="true" />
+    </body>
+</page>

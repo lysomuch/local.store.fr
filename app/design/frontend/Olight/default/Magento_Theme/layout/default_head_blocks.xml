@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="css/swiper.min.css" media="all and (min-width: 1px)"/>
+
+        <!--<css src="css/jquery-ui.min.css" media="all and (min-width: 1px)"/>-->
+        <script src="js/olight.js"/>
+		<meta name="google-site-verification" content="ArLWVD47dClpwnvz5DB7yXGJsUQxP2fgsYTyP-Ih6bo" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <meta name="renderer" content="webkit" />
+        <meta name="author" content="Bob" />
+        <meta name="apple-mobile-web-app-title" content="OLIGHT" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="screen-orientation" content="portrait" />
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <meta name="full-screen" content="yes" />
+        <meta name="x5-page-mode" content="app" />
+        <meta name="x5-fullscreen" content="true" />
+        <meta name="og:title" content="EUREKA" />
+        <meta name="og:description" content="olight store" />
+        <meta name="og:image" content="images/logo.png" />
+        <meta name="msapplication-tap-highlight" content="no" />
+    </head>
+</page>

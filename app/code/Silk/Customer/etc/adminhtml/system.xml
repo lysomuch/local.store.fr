@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="promotion" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="new_customer" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>New Customer Promotion</label>
+                <field id="active" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+        <section id="customer" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="auto_group" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Auto Group</label>
+                <field id="custom_attributes" translate="label" sortOrder="550" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Group Mapping</label>
+                    <backend_model>Silk\Customer\Model\Adminhtml\Config\Backend\ArraySerialized</backend_model>
+                    <source_model>Magento\Customer\Model\Customer\Source\Group</source_model>
+                    <frontend_model>Silk\Customer\Block\Adminhtml\Config\Customdatafields</frontend_model>
+                </field>
+            </group>
+            <group id="startup">
+                <field id="register_redirect" translate="label" type="select"  sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Redirect In Register</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="register_redirect_url" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Redirect URL In Register</label>
+                </field>
+
+                <field id="first_visit_redirect" translate="label" type="select"  sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Redirect In First Visit</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Whether the user's first visit redirect</comment>
+                </field>
+                <field id="first_visit_redirect_url" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Redirect URL In First Visit</label>
+                    <comment>User first visit redirect url</comment>
+                </field>
+                <field id="first_visit_cookie_lifetime" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Cookie Lifetime In First Visit</label>
+                    <comment>Example 3600, Means 3600 second. Default is 3600 second</comment>
+                </field>
+            </group>
+            <group id="oc_customer" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Old Website</label>
+                <field id="is_password_inherit" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable Old Website Customer Password</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

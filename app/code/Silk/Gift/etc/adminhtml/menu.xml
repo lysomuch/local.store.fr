@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Silk_Gift::gift_product_list_all" title="Gift Product" translate="title" module="Silk_Gift" parent="Magento_CatalogRule::promo" sortOrder="80" action="gift/product/index" resource="Silk_Gift::product"/>
+    </menu>
+</config>

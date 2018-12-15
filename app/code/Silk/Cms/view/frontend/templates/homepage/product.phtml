@@ -1,0 +1,19 @@
+<?php
+$productData = $block->getProductDataBySku();
+if($productData['id']) :
+    $final_price = $block->formatPrice($productData['final_price'] );
+    $price = $block->formatPrice($productData['price'] );
+?>
+<div class="info-content">
+    <span class="product-name" title="<?php echo $productData['name'] ?>"><?php echo $productData['name'] ?></span>
+    <div class="rating-box">
+        <span class="rating" style="width: <?php echo $productData['rating_summary'] ?>%;"></span>
+    </div>
+    <div class="price-box">
+        <span class="final-price"><?= $final_price ?></span>
+        <?php if($final_price != $price): ?>
+        <span class="prcie"><?= $price ?></span>
+        <?php endif ?>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,128 @@
+<?php
+    $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();         
+    $storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+    $variables = $objectManager->create('Magento\Variable\Model\Variable');
+    $variables->setStoreId($storeManager->getStore()->getStoreId() );
+	$value1 = $variables->loadByCode('nav-all-products')->getPlainValue();
+	$value2 = $variables->loadByCode('m2')->getPlainValue();
+	$value3 = $variables->loadByCode('m3')->getPlainValue();
+	$value4 = $variables->loadByCode('m4')->getPlainValue();
+	$value5 = $variables->loadByCode('m5')->getPlainValue();
+	$value6 = $variables->loadByCode('m6')->getPlainValue();
+	$value7 = $variables->loadByCode('m7')->getPlainValue();
+	$value8 = $variables->loadByCode('m8')->getPlainValue();
+?>
+<div id="olight-nav">
+    <ul class="hot-nav">
+        <li class="hot-subnav"><a href="/flashlights.html"><?php echo $value1; ?></a>
+            <div class="nav-root">
+                <ul class="menu-list">
+                    <li v-for="(items, index) of nav" :class="index == 0 ? 'active': ''" ref="menuitem">
+                        <a :href="items.url" v-text="items.title"></a>
+                        <div class="root-list">
+                            <ul>
+								
+                                <li v-for="(item, index) of items.products">
+                                    <a :href="item.url">
+                                        <div class="img-box">
+                                            <img :src="item.img" :data-original="item.img" alt="">
+                                        </div>
+                                        <div class="info-content" :title="item.name">
+                                            <span class="product-name" v-text="item.name"></span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="space"></li>
+		<?php if($value2): ?>
+		<li class="hot-subnav">
+                <a href="/flashsale.html" style="color:#000000;font-weight:bold"><?php echo $value2; ?></a>
+         </li>
+		<li class="space"></li>
+		<?php endif; ?>
+                <template v-if="hot.length" v-for="items of hot">
+                    <li class="hot-subnav">
+                        <a :href="items.url">{{items.title}}</a>
+                        <div class="hot-list">
+                            <ul>
+                                <li v-for="item of items.products">
+                                    <a :href="item.url">
+                                        <div class="img-box">
+                                            <img :src="item.img" class="lazy" :data-original="item.img" alt="">
+                                        </div>
+                                    </a>
+
+                                    <div class="info-content" :title="item.name">
+                                        <span class="product-name" v-text="item.name"></span>
+                                        <!-- <div class="price-box">
+                                            <span class="final-price" v-text="item.final_price"></span>
+                                            <span class="prcie" v-text="item.price"></span>
+                                        </div> -->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+        <li class="space"></li>
+                </template>
+		<?php if($value3): ?>
+        <li class="hot-subnav" v-if="!hot.length"><a href="#"><?php echo $value3; ?></a></li>
+        <li class="space" v-if="!hot.length"></li>
+		<?php endif; ?>
+		<?php if($value4): ?>
+        <li class="hot-subnav" v-if="!hot.length"><a href="#"><?php echo $value4; ?></a></li>
+        <li class="space" v-if="!hot.length"></li>
+		<?php endif; ?>
+		<?php if($value5): ?>
+        <li class="hot-subnav" v-if="!hot.length"><a href="#"><?php echo $value5; ?></a></li>
+		<li class="space" v-if="!hot.length"></li>
+	    <?php endif; ?>
+		<?php if($value8): ?>
+        <li class="hot-subnav" v-if="!hot.length"><a href="#"><?php echo $value8; ?></a></li>
+		<li class="space" v-if="!hot.length"></li>
+	    <?php endif; ?>	
+		<?php if($value6): ?>
+        <li class="hot-subnav">
+            <a><?php echo $value6 ?></a>
+            <div class="hot-list support-list">
+                <?php echo $this->getLayout()
+                    ->createBlock('Magento\Cms\Block\Block')
+                    ->setBlockId('support_links')
+                    ->toHtml(); ?>
+            </div>
+        </li>
+       <?php endif; ?>
+        <?php if($value7): ?>
+        <?php if (4 == $storeManager->getStore()->getId()) : ?>
+            <li class="space"></li>
+            <li class="hot-subnav">
+                <a href="<?php echo $this->getUrl('olight-dealers-and-wholesales') ?>"><?php echo $value7;?></a>
+            </li>
+        <?php endif; ?>
+		<?php endif; ?>
+    </ul>
+
+    <div class="mob_nav">
+        <ul class="menu-list">
+			
+            <li v-for="items of nav">
+                <a :href="items.url" v-text="items.title"></a>
+            </li>
+        </ul>
+
+        <ul class="hot-list">
+			
+            <li v-for="items of hot">
+                <a :href="items.url" v-text="items.title"></a>
+            </li>
+        </ul>
+
+    </div>
+
+</div>

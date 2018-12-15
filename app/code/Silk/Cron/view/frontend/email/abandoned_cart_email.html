@@ -1,0 +1,41 @@
+<!--@subject {{trans "Oh. Is this your cart in %store_name" store_name=$store.getFrontendName()}} @-->
+<!--@vars {
+"customer_name":"Customer Name",
+"sender":"Sender",
+"checkout_url":"Checkout Url"
+} @-->
+
+<style>
+    .btn-primary {
+        margin: 10px auto;
+    }
+    .btn-primary td a {
+        background-color: #348eda;
+        border: solid 1px #348eda;
+        border-radius: 25px;
+        border-width: 10px 20px;
+        display: inline-block;
+        color: #ffffff !important;
+        cursor: pointer;
+        font-weight: bold;
+        line-height: 2;
+        text-decoration: none;
+    }
+</style>
+
+<p class="greeting">{{trans "Hello %name," name=$customer_name}}</p>
+<p>{{trans "I’m %sender from %store_name and hopefully, you haven’t forgotten us as well as the shopping cart you left in our store recently. Thus, we would love to be sure that below items will catch your attention again." sender=$sender store_name=$store.getFrontendName()}}</p>
+
+
+<table class="btn-primary" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td>
+            {{trans '<a href="%checkout_url">Your cart here</a>' checkout_url=$checkout_url |raw}}
+        </td>
+    </tr>
+</table>
+
+<p>{{trans "Or if anything got you confused in shopping process? Feel free to contact again to discuss problems you may have. Your satisfaction is the best product we desire to deliver."}}</p>
+
+<p>{{trans "Thank you so much and have a nice day."}}</p>
+

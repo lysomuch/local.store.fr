@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\CatalogStaging\Ui\DataProvider\Product\Form\Modifier\AdvancedPricing" type="Silk\FlashSales\Ui\DataProvider\Product\Form\Modifier\AdvancedPricing" />
+    <preference for="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Eav" type="Silk\FlashSales\Ui\DataProvider\Product\Form\Modifier\Eav" />
+    <preference for="Silk\FlashSales\Api\SalesInterface" type="Silk\FlashSales\Model\Sales" />
+</config>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Dotsquares_Imexport::main_menu" title="Order Import / Export" module="Dotsquares_Imexport" sortOrder="20" resource="Dotsquares_Imexport::imexport" />
+        <add id="Dotsquares_Imexport::export" title="Export Orders" module="Dotsquares_Imexport" sortOrder="1" parent="Dotsquares_Imexport::main_menu" action="imexport/export/orders" resource="Dotsquares_Imexport::export" />
+        <add id="Dotsquares_Imexport::import" title="Import Orders" module="Dotsquares_Imexport" sortOrder="2" parent="Dotsquares_Imexport::main_menu" action="imexport/import/orders" resource="Dotsquares_Imexport::import" />
+    </menu>
+</config>

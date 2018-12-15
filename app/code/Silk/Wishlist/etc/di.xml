@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Wishlist\Controller\Index\Add">
+        <plugin name="multwishlist_index_add" type="Silk\Wishlist\Controller\Index\Add" sortOrder="1" disabled="false" />
+    </type>
+
+    <type name="Magento\Wishlist\Controller\Index\Remove">
+        <plugin name="wishlist_index_remove" type="Silk\Wishlist\Controller\Index\Remove" sortOrder="1" disabled="false" />
+    </type>
+</config>

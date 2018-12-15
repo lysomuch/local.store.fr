@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Bss Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   Bss
+ * @package    Bss_TimeCountdown
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 Bss Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <timeCountdown>
+            <enable_module_group>
+                <enable_module_field>1</enable_module_field>
+            </enable_module_group>
+
+            <startTime>
+                <enable_start>1</enable_start>
+                <numDayStart>10</numDayStart>
+
+                <displayCatalogPageStart>1</displayCatalogPageStart>
+                <catalogStyleTimeStart>default</catalogStyleTimeStart>
+                <isCatalogMessStart>0</isCatalogMessStart>
+
+                <displayProductPageStart>1</displayProductPageStart>
+                <productStyleTimeStart>default</productStyleTimeStart>
+                <isProductMessStart>0</isProductMessStart>
+            </startTime>
+
+            <endTime>
+                <enable_end>1</enable_end>
+                <numDayEnd>10</numDayEnd>
+
+                <displayCatalogPageEnd>1</displayCatalogPageEnd>
+                <catalogStyleTimeEnd>default</catalogStyleTimeEnd>
+                <isCatalogMessEnd>0</isCatalogMessEnd>
+
+                <displayProductPageEnd>1</displayProductPageEnd>
+                <productStyleTimeEnd>default</productStyleTimeEnd>
+                <isProductMessEnd>0</isProductMessEnd>
+            </endTime>
+
+            <bss_seo>
+                <url_label>promotion</url_label>
+                <url_key>list-product</url_key>
+            </bss_seo>
+
+        </timeCountdown>
+    </default>
+</config>

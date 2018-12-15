@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="sales_email_abandoned_cart_email_template" label="Abandoned Cart Email" file="abandoned_cart_email.html" type="html" module="Silk_Cron" area="frontend"/>
+    <template id="sales_email_birthday_reminder_email_template" label="Birthday Reminder Email" file="birthday_reminder_email.html" type="html" module="Silk_Cron" area="frontend"/>
+    <template id="sales_email_order_review_email_template" label="Order Review Email" file="order_review_email.html" type="html" module="Silk_Cron" area="frontend"/>
+    <template id="sales_email_payment_reminder_email_template" label="Payment Reminder Email" file="payment_reminder_email.html" type="html" module="Silk_Cron" area="frontend"/>
+</config>

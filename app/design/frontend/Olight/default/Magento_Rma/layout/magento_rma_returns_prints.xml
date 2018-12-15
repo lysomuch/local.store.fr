@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="magento_rma_returns_view_handle"/>
+    <update handle="print" />
+    <body>
+        <move element="page.main.title" destination="content" before="-"/>
+
+        <referenceContainer name="page.main.title">
+            <block class="Magento\Rma\Block\Returns\View" name="return.status" template="Magento_Rma::return/return_status_prints.phtml" />
+        </referenceContainer>
+        <referenceContainer name="content">
+            <referenceBlock name="customer_account_dashboard_info" remove="true" />
+            <block class="Magento\Rma\Block\Returns\View" name="rma.returns.history" template="Magento_Rma::return/view_prints.phtml" cacheable="false">
+            </block>
+        </referenceContainer>
+        <block class="Magento\Rma\Block\Returns\Tracking" name="rma.returns.tracking" as="tracking" cacheable="false"/>
+    </body>
+</page>

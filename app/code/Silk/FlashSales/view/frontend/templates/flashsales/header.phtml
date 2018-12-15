@@ -1,0 +1,76 @@
+<?php /** @var \Silk\FlashSales\Block\CountDown $block */ ?>
+<?php if ($block->getProduct()): ?>
+    <script type="text/javascript"
+            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b07815d5b72531d" async></script>
+    <script>
+        var startTime = '<?php echo $block->getStartTime() ?>',
+            endTime = '<?php echo $block->getEndTime() ?>';
+    </script>
+
+    <div class="countdown" v-show="state!='end'" v-cloak>
+        <a>
+            <div class="left-box">
+                <div class="flash-tit">TIME<br/>LEFT</div>
+                <div class="share-box">
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_inline_share_toolbox"></div>
+                </div>
+            </div>
+            <div class="time-box" :class="{'time-ready': !isReady}">
+                <div id="time-number" v-cloak>
+
+                    <div class="falsh-day">
+                        <div class="num-box">
+                            <i></i>
+                            <span>
+                    {{day | numDouble(true)}}
+                </span>
+                        </div>
+                        <div class="text-box">
+                            DAY
+                        </div>
+                    </div>
+                    <span>:</span>
+                    <div class="falsh-hour">
+                        <div class="num-box">
+                            <i></i>
+                            <i></i>
+                            <span>
+                    {{hour | numDouble}}
+                </span>
+                        </div>
+                        <div class="text-box">
+                            HOUR
+                        </div>
+                    </div>
+                    <span>:</span>
+                    <div class="falsh-min">
+                        <div class="num-box">
+                            <i></i>
+                            <i></i>
+                            <span>
+                    {{minute | numDouble}}
+                </span>
+                        </div>
+                        <div class="text-box">
+                            MIN
+                        </div>
+                    </div>
+                    <span>:</span>
+                    <div class="falsh-sec">
+                        <div class="num-box">
+                            <i></i>
+                            <i></i>
+                            <span>
+                    {{seconds | numDouble}}
+                </span>
+                        </div>
+                        <div class="text-box">
+                            SEC
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+<?php endif; ?>

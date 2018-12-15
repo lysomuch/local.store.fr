@@ -1,0 +1,172 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+@catalog-event-background-color: @color-gray94;
+@catalog-event-color: @primary__color;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    //
+    //  Catalog Events
+    //  ---------------------------------------------
+
+    .block-category-event {
+        .lib-css(color, @catalog-event-color);
+        padding: @indent__s 0 15px;
+
+
+        &.block:last-child {
+            margin-bottom: @indent__s;
+        }
+
+        .block-title {
+            margin: 0 0 @indent__s;
+
+            strong {
+                .lib-font-size(15);
+                font-weight: @font-weight__light;
+            }
+        }
+
+        .ticker {
+            .lib-list-reset-styles();
+
+            li {
+                display: none;
+                margin: 0 15px;
+            }
+
+            .value {
+                .lib-font-size(18);
+                font-weight: @font-weight__light;
+            }
+
+            .label {
+                .lib-font-size(10);
+                display: block;
+                text-transform: lowercase;
+            }
+        }
+
+        .dates {
+
+            margin: 0 auto;
+
+            .start,
+            .end {
+                display: table-cell;
+                vertical-align: top;
+            }
+
+            .date {
+                .lib-font-size(18);
+            }
+
+            .time {
+                display: block;
+            }
+
+            .start {
+                padding-right: @indent__xl;
+                position: relative;
+
+                &:after {
+                    .lib-font-size(18);
+                    content: '\2013';
+                    display: block;
+                    position: absolute;
+                    right: 15px;
+                    top: 0;
+                }
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+	
+    .block-category-event {
+	     margin-bottom:0 !important;
+		overflow:hidden;
+		height:60px;
+        &.block:last-child {
+            padding: @indent__s 0 @indent__l;
+        }
+
+        .block-title {
+            margin: 0;
+			padding:5px 0px 20px;
+			float:left;
+			line-height:50px;
+            strong {
+               font-size:3rem;
+            }
+        }
+
+        .ticker {
+            li {
+                display:inline-block;
+                margin: 0 5px;
+
+            }
+
+            .value {
+				font-size:30px;
+				background:#ff0000;
+				padding:5px 10px;
+				border:1px #ccc solid;
+				border-radius:35px;
+				-moz-border-radius:35px;
+				color:#ffffff;
+				font-weight:700;
+				
+            }
+            .label {
+				font-size:15px;
+                text-transform: none;
+				text-align:center;
+				padding-top:10px;
+            }
+        }
+
+        .dates {
+            .date {
+                font-size:20px;
+				float:left;
+				margin-left:10px;
+				padding-top:10px;
+            }
+			 .time {
+                display: block;
+				padding-left:10px;
+            }
+            .start {
+                padding-right: 50px;
+
+                &:after {
+                     font-size:40px;
+                    right: 10px;
+					bottom:0 !important;
+                }
+            }
+        }
+    }
+	.catalog-category-view{
+		.block-category-event {
+		  text-align:center ;
+		  .block-title{
+		  float:none;
+		  }
+		}
+	}
+}

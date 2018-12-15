@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
+    <body>
+        <move element="customer_account_dashboard_info" destination="page.wrapper" before="main.content" />
+        <move element="sidebar.main.account_nav" destination="content" before="-"/>
+        <referenceContainer name="main.content" htmlClass="page-main dashboard-content"></referenceContainer>
+        <referenceBlock name="customer-account-navigation-magento-invitation-link-container" remove="true"/>
+        <referenceBlock name="customer-account-navigation-customer-balance-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-giftregistry-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-billing-agreements-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-gift-card-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-my-credit-cards-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-checkout-sku-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-downloadable-products-link" remove="true" />
+        <referenceBlock name="customer-account-navigation-delimiter-1" remove="true" />
+        <referenceBlock name="customer-account-navigation-delimiter-2" remove="true" />
+        <referenceBlock name="customer-account-navigation-account-edit-link">
+            <arguments>
+                <argument name="label" xsi:type="string" translate="true">My Account</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="customer_account_navigation" >
+            <arguments>
+                <argument name="css_class" xsi:type="string">nav items swiper-wrapper</argument>
+            </arguments>
+
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Customer\Model\Data\Customer" type="Silk\Customer\Model\Data\Customer" />
+    <preference for="Magento\Customer\Model\ResourceModel\CustomerRepository" type="Silk\Customer\Model\ResourceModel\CustomerRepository" />
+    <preference for="Magento\Customer\Block\Account\Dashboard\Info" type="Silk\Customer\Block\Account\Dashboard\Info" />
+    <preference for="Magento\Customer\Model\EmailNotification" type="Silk\Customer\Model\EmailNotification" />
+    <preference for="Magento\Customer\Controller\Account\CreatePost" type="Silk\Customer\Controller\Account\CreatePost" />
+    <preference for="Magento\Customer\Controller\Account\LoginPost" type="Silk\Customer\Controller\Account\LoginPost" />
+    <preference for="Magento\Customer\Model\AccountManagement" type="Silk\Customer\Model\AccountManagement" />
+    <preference for="Magento\Customer\Controller\Section\Load" type="Silk\Customer\Controller\Section\Load" />
+</config>

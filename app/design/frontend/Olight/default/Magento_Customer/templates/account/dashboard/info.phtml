@@ -1,0 +1,51 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Account\Dashboard\Info $block */
+?>
+<div class="block block-dashboard-info">
+    <div class="page-main">
+        <div class="block-content">
+            <div class="box box-information">
+                <strong class="box-title">
+                    <span><?= $block->escapeHtml($block->getName()) ?></span>
+                </strong>
+                <div class="box-content">
+                    <p>
+                        <?= $block->escapeHtml($block->getCustomer()->getEmail()) ?>
+                    </p>
+                </div>
+            </div>
+            <div class="box box-static">
+                <div class="box-content">
+                    <ul>
+                        <li class="shipping">
+                            <p><a href="/sales/order/history"><?=$block->getShippingNum() ?><?= $block->escapeHtml(__('Shipping')) ?></a></p>
+                            <p><?= $block->escapeHtml(__('To Be Tracked')) ?></p>
+                        </li>
+                        <li class="history">
+                            <p><a href="/sales/order/history"><?=$block->getHistoryNum() ?><?= $block->escapeHtml(__('History')) ?></a></p>
+                            <p><?= $block->escapeHtml(__('In Total')) ?></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

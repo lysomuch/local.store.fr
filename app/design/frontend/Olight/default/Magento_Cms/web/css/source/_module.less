@@ -1,0 +1,160 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+  body.cms-no-route{
+    background: @color-white;
+    .page-title-wrapper{
+      margin-top: 30px;
+    }
+  }
+  body.cms-page-view{
+    background: @color-white;
+    .page-title-wrapper{
+      margin-bottom: 20px;
+      h1{
+        font-size:unit(@font-size-unit-ratio * 3.8, px);
+        color: @button-primary__background;
+        font-weight:@font-weight__bold;
+        margin: 30px 0 0 0;
+      }
+    }
+    h2.secondTitle{
+      font-size:unit(@font-size-unit-ratio * 2.2 ,px);
+      color: @button-primary__hover__background;
+      margin-top: 60px;
+      margin-bottom: 20px;
+      font-weight:@font-weight__semibold;
+      text-transform: uppercase;
+    }
+    .item-title{
+      background: @colorD6;
+      padding: 10px 15px;
+      font-size: unit(@font-size-unit-ratio * 1.6 ,px);
+      color: @color22;
+      margin-bottom: 10px;
+      cursor: pointer;
+      i{
+        float: right;
+        font-size:unit(@font-size-unit-ratio * 2 ,px);
+      }
+    }
+    .item-content{
+      padding: 10px 0;
+      display: none;
+      margin-bottom: 30px;
+    }
+    .dealers-wholesale-wrapper{
+      margin: 20px 0;
+      ol{
+        margin-left: 20px;
+        li{
+          list-style: decimal;
+          &.li-hidden{
+            display: none;
+          }
+        }
+      }
+      .form-box{
+        background: @colorF2;
+        padding: 20px;
+        border: 1px solid @order_line_color;
+        margin: 20px 0;
+        h1{
+          font-size: unit(@font-size-unit-ratio * 2.6, px);
+          margin-bottom: 10px;
+        }
+        .form-ul li{
+          margin-bottom: 15px;
+          label{
+            margin-bottom: 5px;
+            display: block;
+          }
+          abbr{
+            color: @color-red
+          }
+          textarea{
+            height: 132px
+          }
+        }
+        .checkbox-wrapper .label-box{
+          .lib-vendor-prefix-display();
+          label{
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  body.cms-page-view{
+    .page-title-wrapper h1{
+      font-size:unit(@font-size-unit-ratio * 3, px);
+    }
+    .dealers-wholesale-wrapper .form-box .checkbox-wrapper .label-box{
+      flex-wrap: wrap;
+      label{
+        width: 33%;
+        margin-right: 0;
+      }
+    }
+  }
+
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+  body.cms-page-view {
+    .item-title {
+      font-size: unit(@font-size-unit-ratio * 1.4, px);
+    }
+    .dealers-wholesale-wrapper .form-box .checkbox-wrapper div.label-box{
+      label{
+        width: 50%;
+      }
+    }
+  }
+}
+  .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    body.cms-page-view{
+      .page-title-wrapper h1{
+        font-size:unit(@font-size-unit-ratio * 2.2, px);
+      }
+      h2.secondTitle{
+        font-size: unit(@font-size-unit-ratio * 1.2, px);
+      }
+      .item-content{
+        font-size: unit(@font-size-unit-ratio * 1.2, px);
+      }
+      .dealers-wholesale-wrapper .form-box h1{
+        font-size: unit(@font-size-unit-ratio * 1.8, px);
+      }
+    }
+  }
+
+
+
+
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__1300) {
+  body.catalog-product-view{
+    .product-main-infor-box{
+      margin: 0 20px;
+    }
+  }
+}

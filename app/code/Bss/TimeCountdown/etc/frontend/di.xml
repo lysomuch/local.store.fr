@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Bss Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   Bss
+ * @package    Bss_TimeCountdown
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 Bss Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Catalog\Block\Product\View">
+        <plugin name="Product_Plugin" type="Bss\TimeCountdown\Plugin\ProductPlugin" sortOrder="1" />
+    </type>
+
+    <type name="Magento\Catalog\Pricing\Render\FinalPriceBox">
+        <plugin name="set_product_list" type="Bss\TimeCountdown\Plugin\ProductListPlugin" sortOrder="1" />
+    </type>
+    <preference for="Magento\CatalogRule\Model\ResourceModel\Rule" type="Bss\TimeCountdown\Plugin\Model\ResourceModel\Rule"/>
+    <preference for="Magento\Catalog\Model\ResourceModel\Product\Collection" type="Bss\TimeCountdown\Plugin\Model\ResourceModel\Product\Collection" />
+
+    <type name="Magento\Framework\App\RouterList">
+        <arguments>
+            <argument name="routerList" xsi:type="array">
+                <item name="bsstimercountdown" xsi:type="array">
+                    <item name="class" xsi:type="string">Bss\TimeCountdown\Controller\Router</item>
+                    <item name="disable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="string">1</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+        <plugin name="bss-timecountdown-jsonconfig" type="Bss\TimeCountdown\Plugin\Block\Product\View\Type\Configurable"/>
+    </type>
+
+</config>

@@ -1,0 +1,97 @@
+<div class="box-account box-info box-affiliate affiliate-refer-content affiliate-block">
+	<?php
+	if ($blockId = $block->getConfig('refer/referring_page')) {
+		echo $block->loadCmsBlock($blockId);
+	} ?>
+</div>
+
+<div class="box-account box-info box-affiliate affiliate-refer-type">
+	<form action="<?= $block->getSendmailUrl() ?>" method="post" id="form-validate" class="form form-edit-account form-affiliate form-affiliate-refer-sendmail">
+		<fieldset class="fieldset request">
+			<legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Referral Url and Code') ?></span></legend><br>
+			<div class="field url">
+				<label class="label" for="refer_url"><span><?php /* @escapeNotVerified */ echo __('Refer Url') ?></span></label>
+				<div class="control">
+					<input type="text" name="refer_url" id="refer_url" value="<?php echo $block->getSharingUrl() ?>" title="<?php echo __('Refer Url') ?>" class="input-text" readonly onclick="this.select()"/>
+				</div>
+				<div class="affiliate-strength-meter">
+					<?php echo __('Referrals that access this URL are connected as referrals once they sign up or place an order.') ?>
+				</div>
+			</div>
+			<div class="field email">
+				<label class="label" for="refer_email"><span><?php /* @escapeNotVerified */ echo __('Refer Email') ?></span></label>
+				<div class="control">
+					<input type="text" name="refer_email" id="refer_email" value="<?php echo $block->getSharingEmail() ?>" title="<?php echo __('Refer Email') ?>" class="input-text" readonly onclick="this.select()"/>
+				</div>
+				<div class="affiliate-strength-meter">
+					<?php echo __('Referrals can enter your e-mail address when signing up affiliate account.') ?>
+				</div>
+			</div>
+			<?php if($block->getConfig('refer/addthis_pubid')): ?>
+			<div class="field social_sharing">
+				<label class="label" for="refer_social"><span><?php /* @escapeNotVerified */ echo __('Referral Via Social Networks') ?></span></label>
+				<div class="control">
+					<div class="referral-addthis">
+						<div class="addthis_sharing_toolbox"></div>
+						<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $block->getConfig('refer/addthis_pubid') ?>"></script>
+					 </div>
+				</div>
+			</div>
+			<?php endif; ?>
+		</fieldset>
+		<fieldset class="fieldset request">
+			<legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Send Invitation') ?></span></legend><br>
+			<div class="field sharing_email">
+				<label class="label" for="recipient_list"><span><?php /* @escapeNotVerified */ echo __('Enter your friends\' emails separated by comma') ?></span></label>
+				<div class="control">
+					<textarea name="contacts" id="recipient_list" class="affiliate_recipient_list input-text required" rows="3" data-validate="{required:true}"></textarea>
+				</div>
+				<?php if ($block->getConfig('refer/cloudsponge') && $block->getConfig('refer/cloudsponge_key')): ?>
+					<script>
+					  (function(u){
+						  var d=document,s='script',a=d.createElement(s),m=d.getElementsByTagName(s)[0];
+						  a.async=1;a.src=u;m.parentNode.insertBefore(a,m);
+					  })('//api.cloudsponge.com/widget/<?= $block->getConfig('refer/cloudsponge_key') ?>.js');
+					  window.csPageOptions = { textarea_id: "recipient_list" };
+					</script>
+					<a class="cs_import"><?= __('Add from Address Book') ?></a>
+				<?php endif; ?>
+			</div>
+			<div class="field sharing_subject required">
+				<label class="label" for="refer_subject"><span><?php /* @escapeNotVerified */ echo __('Subject') ?></span></label>
+				<div class="control">
+					<input id="refer_subject" class="input-text required" data-validate="{required:true}" type="text" title="<?php echo __('Subject') ?>" name="subject" value="<?php echo $block->getSharingTitle() ?>"/>
+				</div>
+			</div>
+			<div class="field sharing_content required">
+				<label class="label" for="refer_content"><span><?php /* @escapeNotVerified */ echo __('Your message') ?></span></label>
+				<div class="control">
+					<textarea name="content" id="refer_content" class="input-text required affiliate-referral-message" rows="4" data-validate="{required:true}" cols="80" title="<?php echo __('Short Message') ?>"><?php echo $block->getEmailContent(); ?></textarea>
+					<p class="note"><span><?php echo __('Just your message, no need to put Refer Url here.') ?></span></p>
+				</div>
+			</div>
+
+			<div class="actions-toolbar affiliate-clear">
+				<div class="primary">
+					<button type="submit" id="refer-sendmail-button" class="action save primary" title="<?php /* @escapeNotVerified */ echo __('Send') ?>"><span><?php /* @escapeNotVerified */ echo __('Send') ?></span></button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+
+<script>
+    require([
+        "jquery",
+        "mage/mage"
+    ], function($){
+        var dataForm = $('#form-validate');
+
+        dataForm.mage('validation', {
+        	errorPlacement: function(error, element) {
+            	error.insertAfter(element);
+        	}
+    	})
+    });
+</script>

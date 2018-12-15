@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Paypal\Controller\Express\Cancel" type="Silk\Paypal\Controller\Express\Cancel" />
+    <preference for="Magento\Paypal\Model\Config" type="Silk\Paypal\Model\Config" />
+</config>

@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="mage/gallery/gallery.css"/>
+    </head>
+    <body>
+        <referenceContainer name="page.top">
+            <referenceBlock name="breadcrumbs" remove="true"/>
+            <container name="header_block" htmlTag="div" htmlClass="flash_sales_page_header">
+                <block class="Magento\Cms\Block\Block" name="flash_sales_page_header">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">flash_sales_page_header</argument>
+                    </arguments>
+                </block>
+            </container>
+            <block class="Silk\FlashSales\Block\Header" name="flash_sales_time" template="Silk_FlashSales::flashsales/header.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <container name="flash.product.content" htmlTag="div" htmlClass="flash-product-content" before="-">
+                <container name="product.info.main" htmlTag="div" htmlClass="product-info-main" before="-">
+                    <container name="product.info.content" htmlTag="div" htmlClass="product-info-content">
+                        <container name="product.info.price" label="Product info auxiliary container" htmlTag="div" htmlClass="product-info-price">
+                            <block class="Magento\Catalog\Pricing\Render" name="product.price.final">
+                                <arguments>
+                                    <argument name="price_render" xsi:type="string">product.price.render.default</argument>
+                                    <argument name="price_type_code" xsi:type="string">final_price</argument>
+                                    <argument name="zone" xsi:type="string">item_view</argument>
+                                </arguments>
+                            </block>
+                        </container>
+                        <block class="Magento\Catalog\Block\Product\View" name="product.info.review" template="Magento_Catalog::product/view/review.phtml" after="product.info.price"/>
+                        <container name="product.info.short.description" htmlTag="div" after="product.info.review">
+                            <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.overview" template="Magento_Catalog::product/view/attribute.phtml">
+                                <arguments>
+                                    <argument name="at_call" xsi:type="string">getShortDescription</argument>
+                                    <argument name="at_code" xsi:type="string">short_description</argument>
+                                    <argument name="css_class" xsi:type="string">overview</argument>
+                                    <argument name="at_label" xsi:type="string">none</argument>
+                                    <argument name="title" translate="true" xsi:type="string">Overview</argument>
+                                    <argument name="add_attribute" xsi:type="string">itemprop="description"</argument>
+                                </arguments>
+                            </block>
+                        </container>
+                        <block class="Magento\Catalog\Block\Product\View" name="product.info" template="Silk_FlashSales::product/view/form.phtml" after="product.info.short.description">
+                            <container name="product.info.form.content" as="product_info_form_content">
+                                <block class="Silk\Catalog\Block\Product\Accessories" name="product.info.accessories" as="accessories" template="Silk_Catalog::product/view/accessories.phtml"/>
+                                <block class="Magento\Catalog\Block\Product\View" name="product.info.addtocart" as="addtocart" template="Magento_Catalog::product/view/addtocart.phtml"/>
+                            </container>
+                        </block>
+                    </container>
+                </container>
+                <container name="product.info.media" htmlTag="div" htmlClass="product media" after="product.info.main">
+                    <block class="Magento\Framework\View\Element\Template" name="skip_gallery_after.target"
+                           before="skip_gallery_before.wrapper" template="Magento_Theme::html/skiptarget.phtml">
+                        <arguments>
+                            <argument name="target_id" xsi:type="string">gallery-prev-area</argument>
+                        </arguments>
+                    </block>
+                    <container name="skip_gallery_before.wrapper" htmlTag="div" htmlClass="action-skip-wrapper">
+                        <block class="Magento\Framework\View\Element\Template" before="product.info.media.image"
+                               name="skip_gallery_before" template="Magento_Theme::html/skip.phtml">
+                            <arguments>
+                                <argument name="target" xsi:type="string">gallery-next-area</argument>
+                                <argument name="label" translate="true" xsi:type="string">Skip to the end of the images
+                                    gallery
+                                </argument>
+                            </arguments>
+                        </block>
+                    </container>
+                    <block class="Magento\Catalog\Block\Product\View\Gallery" name="product.info.media.image"
+                           template="Magento_Catalog::product/view/gallery.phtml"/>
+                    <container name="skip_gallery_after.wrapper" htmlTag="div" htmlClass="action-skip-wrapper">
+                        <block class="Magento\Framework\View\Element\Template" after="product.info.media.image"
+                               name="skip_gallery_after" template="Magento_Theme::html/skip.phtml">
+                            <arguments>
+                                <argument name="target" xsi:type="string">gallery-prev-area</argument>
+                                <argument name="label" translate="true" xsi:type="string">Skip to the beginning of the
+                                    images gallery
+                                </argument>
+                            </arguments>
+                        </block>
+                    </container>
+                    <block class="Magento\Framework\View\Element\Template" name="skip_gallery_before.target"
+                           after="skip_gallery_after.wrapper" template="Magento_Theme::html/skiptarget.phtml">
+                        <arguments>
+                            <argument name="target_id" xsi:type="string">gallery-next-area</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+            <container name="footer_block" htmlTag="div" htmlClass="flash_sales_page_footer">
+                <block class="Magento\Cms\Block\Block" name="flash_sales_page_footer" after="product.info.media">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">flash_sales_page_footer</argument>
+                    </arguments>
+                </block>
+            </container>
+            <container name="flash_unstart" htmlTag="div" htmlClass="flash_unstart">
+                <block class="Magento\Framework\View\Element\Template" name="flash_unstart_email"
+                       template="Silk_FlashSales::flashsales/flash_sales_email.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" name="flash_unstart_live"
+                       template="Silk_FlashSales::flashsales/cms_live.phtml"/>
+            </container>
+
+        </referenceContainer>
+        <referenceBlock name="product.info.addtocart">
+            <block class="Magento\Catalog\Block\ShortcutButtons\InCatalog" name="addtocart.shortcut.buttons"/>
+        </referenceBlock>
+        <referenceBlock name="product.info.addtocart.additional">
+            <block class="Magento\Catalog\Block\ShortcutButtons\InCatalog" name="addtocart.shortcut.buttons.additional"/>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Magento\Catalog\Block\Ui\ProductViewCounter" name="product_viewed_counter"
+                   template="Magento_Catalog::product/view/counter.phtml"/>
+        </referenceContainer>
+
+        <block class="Silk\FlashSales\Block\Title" name="page.main.title"
+               template="Silk_FlashSales::flashsales/title.phtml"/>
+        <move element="page.main.title" destination="product.info.content" before="-"/>
+
+    </body>
+</page>

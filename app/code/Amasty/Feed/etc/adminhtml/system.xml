@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Feed
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="amasty_feed" translate="label" type="text" sortOrder="161812" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Product Feed</label>
+            <tab>amasty</tab>
+            <resource>Amasty_Feed::general</resource>
+            <group id="amasty_information" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Information</label>
+                <frontend_model>Amasty\Feed\Block\Adminhtml\System\Config\Information</frontend_model>
+            </group>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General</label>
+                <field id="batch_size" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Batch Size</label>
+                    <comment>Indicate how many products will be handled during one iteration. Affects the feed generation time and the server memory consumption.</comment>
+                </field>
+                <field id="category_path" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL with category</label>
+                    <source_model>Amasty\Feed\Model\Config\Source\Path</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

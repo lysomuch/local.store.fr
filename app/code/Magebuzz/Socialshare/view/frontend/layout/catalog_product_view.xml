@@ -1,0 +1,15 @@
+<!--
+/**
+* @copyright Copyright (c) 2016 www.magebuzz.com
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="Magebuzz_Socialshare::css/socialshare.css"/>
+    </head>
+	<body>
+		<referenceContainer name="page.main.title">
+			<block class="Magebuzz\Socialshare\Block\Socialshare" name="socialshare" template="Magebuzz_Socialshare::socialshare.phtml" />
+		</referenceContainer>
+	</body>
+</page>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <customer>
+            <captcha>
+                <shown_to_logged_in_user>
+                    <custom_form>1</custom_form>
+                </shown_to_logged_in_user>
+                <always_for>
+                    <custom_form>1</custom_form>
+                </always_for>
+            </captcha>
+        </customer>
+        <captcha translate="label">
+            <frontend>
+                <areas>
+                    <custom_form>
+                        <label>Custom Form</label>
+                    </custom_form>
+                </areas>
+            </frontend>
+        </captcha>
+        <cms>
+            <footer_social_icon_link>
+                <facebook>https://www.facebook.com/olightworld</facebook>
+                <twitter>https://twitter.com/OlightWorld</twitter>
+                <google_plus>https://plus.google.com/u/0/+olightworld</google_plus>
+                <youtobe>https://www.youtube.com/user/olightworld/videos</youtobe>
+                <instagram>https://www.instagram.com/olightworld</instagram>
+            </footer_social_icon_link>
+            <header_single_row_text>
+                <shopping_tips>30 day money back guarantee | Free shipping over $49</shopping_tips>
+            </header_single_row_text>
+        </cms>
+    </default>
+</config>

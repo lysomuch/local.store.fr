@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Sales\Block\Order\History" type="Silk\Sales\Block\Order\History" />
+    <preference for="Magento\Sales\Model\Config\Source\Order\Status\NewStatus" type="Silk\Sales\Model\Config\Source\Order\Status\NewStatus" />
+    <!--<preference for="Magento\Sales\Model\Order\Shipment\Track" type="Silk\Sales\Model\Order\Shipment\Track" />-->
+    <!--<preference for="Magento\Sales\Model\Order\ShipmentRepository" type="Silk\Sales\Model\Order\ShipmentRepository" />-->
+</config>

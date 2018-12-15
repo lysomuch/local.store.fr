@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="dealer_wholesale_email_template" label="Dealer Wholesale Email" file="dealer_wholesale_email.html" type="html" module="Silk_Cms" area="frontend"/>
+</config>

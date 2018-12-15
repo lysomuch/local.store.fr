@@ -1,0 +1,169 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Rma\Block\Returns\View */
+?>
+
+<?php
+    $_rma = $block->getRma();
+    $_order = $block->getOrder();
+    $additionalData = $block->getAdditionalData();
+    $rmaHelper = $block->getRmaHelper();
+?>
+<div class="content-box">
+<div class="block block-return-details">
+    <div class="block-content">
+        <div class="box box-returns-requested">
+            <strong class="box-title"><span><?= /* @escapeNotVerified */ __('Request Information') ?></span></strong>
+            <div class="box-content">
+                <?= /* @escapeNotVerified */ __('ID') ?>: <?= $block->escapeHtml($_rma->getIncrementId()) ?><br>
+                <?= /* @escapeNotVerified */ __('Order ID') ?>: <a href="<?= /* @escapeNotVerified */ $block->getOrderUrl($_rma) ?>"><?= $block->escapeHtml($_rma->getOrderIncrementId()) ?></a><br>
+                <?= /* @escapeNotVerified */ __('Date Requested') ?>: <?= /* @escapeNotVerified */ $rmaHelper->getFormatedDate($_rma->getDateRequested()) ?><br>
+                <?= /* @escapeNotVerified */ __('Email') ?>: <?= $block->escapeHtml($_order->getCustomerEmail()) ?>
+                <?php if ($_rma->getCustomerCustomEmail()): ?>
+                    <br>
+                    <?= /* @escapeNotVerified */ __('Contact Email Address') ?>: <?= $block->escapeHtml($_rma->getCustomerCustomEmail()) ?>
+                <?php endif ?>
+            </div>
+        </div>
+        <div class="box box-treturns-shipping">
+            <strong class="box-title"><span><?= /* @escapeNotVerified */ __('Shipping Address') ?></span></strong>
+            <div class="box-content">
+                <address>
+                    <?= /* @escapeNotVerified */ $block->getAddress() ?>
+                </address>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="returns-details-items">
+    <span id="rma-please-wait" class="please-wait load indicator" style="display: none;" data-text="<?= /* @escapeNotVerified */ __('This won\'t take long . . .') ?>">
+        <span><?= /* @escapeNotVerified */ __('This won\'t take long . . .') ?></span>
+    </span>
+
+    <?php $trackingNumbers = $block->getTrackingNumbers() ?>
+    <?php if ($block->isPrintShippingLabelAllowed() || $trackingNumbers->count()): ?>
+        <div class="block block-returns-tracking">
+            <div class="block-title">
+                <strong><?= /* @escapeNotVerified */ __('Shipping and Tracking Information') ?></strong>
+            </div>
+            <div class="block-content">
+                <form method="post"
+                      id="rma_track_info"
+                      class="form form-tracking"
+                      data-mage-init='{"rmaTrackInfo":{"addLabelUrl": "<?= /* @escapeNotVerified */ $block->getAddLabelUrl() ?>"}, "validation":{}}'>
+                    <div class="table-wrapper">
+                        <table class="data table" id="track-info-table">
+                            <caption class="table-caption"><?= /* @escapeNotVerified */ __('Shipping and Tracking Information') ?></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="col carrier"><?= /* @escapeNotVerified */ __('Carrier') ?></th>
+                                    <th scope="col" class="col id"><?= /* @escapeNotVerified */ __('Number') ?></th>
+                                    <th scope="col" class="col actions"><?= /* @escapeNotVerified */ __('Action') ?></th>
+                                </tr>
+                            </thead>
+                            <tbody id="track-info-tbody">
+                                <?= /* @escapeNotVerified */ $block->getTrackingInfo('tracking') ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <?php endif ?>
+
+    <div class="block block-returns-items">
+        <div class="block-title">
+            <strong><?= /* @escapeNotVerified */ __('Items Return Requested For') ?></strong>
+        </div>
+        <div class="block-content">
+            <div class="table-wrapper table-returns">
+                <table class="data table table-returns" id="my-returns-items-table">
+                    <caption class="table-caption"><?= /* @escapeNotVerified */ __('Items Return Requested For') ?></caption>
+                    <thead>
+                        <tr>
+                            <?php $availableAttributes = $block->getVisibleAttributes(); ?>
+                            <th scope="col" class="col id"><?= /* @escapeNotVerified */ __('Product Name') ?></th>
+                            <th scope="col" class="col sku"><?= /* @escapeNotVerified */ __('SKU') ?></th>
+                            <?php if (isset($availableAttributes['condition'])): ?>
+                                <th scope="col" class="col condition"><?= /* @escapeNotVerified */ __('Condition') ?></th>
+                            <?php endif; ?>
+                            <?php if (isset($availableAttributes['condition'])): ?>
+                                <th scope="col" class="col resolution"><?= /* @escapeNotVerified */ __('Resolution') ?></th>
+                            <?php endif; ?>
+                            <th scope="col" class="col request qty"><?= /* @escapeNotVerified */ __('Request Qty') ?></th>
+                            <th scope="col" class="col qty"><?= /* @escapeNotVerified */ __('Qty') ?></th>
+                            <th scope="col" class="col status"><?= /* @escapeNotVerified */ __('Status') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $_qna = null; ?>
+                        <?php foreach ($block->getItems() as $key => $item): ?>
+                            <?php foreach ($block->getRealValueAttributes($item->getId()) as $code => $attribute) {
+    if (!in_array($code, $block->getAttributeFilter()) && !empty($attribute['value']) && $block->getAttributeLabel($item->getId(), $code)
+        && false !== $block->getAttributeValue($item->getId(), $code)) {
+        $_qna = '
+                                        <tr><td class="col questions">' . $block->getAttributeLabel($item->getId(), $code) . '</td>
+                                        <td class="col answers">' . $block->getAttributeValue($item->getId(), $code) . '</td></tr>
+                                    ';
+    }
+} ?>
+                        <tr>
+                            <td data-th="<?= $block->escapeHtml(__('Product Name')) ?>" class="col id">
+                                <?= $block->escapeHtml($item->getProductName()) ?>
+                                <?php if ($_options = $block->getItemOptions($item)): ?>
+                                <dl class="item options">
+                                <?php foreach ($_options as $_option) : ?>
+                                    <dt><?= $block->escapeHtml($_option['label']) ?></dt>
+                                    <dd><?= /* @escapeNotVerified */ $_option['value'] ?></dd>
+                                <?php endforeach; ?>
+                                </dl>
+                                <?php endif; ?>
+                                <?php if ($_qna) : ?>
+                                    <button class="action details" type="button" data-mage-init='{"toggleAdvanced": {"newLabel": "<?= /* @escapeNotVerified */ __('Hide Details') ?>", "toggleContainers": "#shf_<?= /* @escapeNotVerified */ $key ?>"}}'>
+                                        <span><?= /* @escapeNotVerified */ __('Show Details') ?></span>
+                                    </button>
+                                <?php endif; ?>
+                            </td>
+                            <td data-th="<?= $block->escapeHtml(__('SKU')) ?>" class="col sku"><?= $block->escapeHtml($item->getProductSku()) ?></span></td>
+                            <?php if (false !== $block->getAttributeValue($item->getId(), 'condition')) : ?>
+                                <td data-th="<?= $block->escapeHtml(__('Condition')) ?>" class="col condition"><?= $block->escapeHtml($block->getAttributeValue($item->getId(), 'condition')) ?></td>
+                            <?php endif; ?>
+                            <?php if (false !== $block->getAttributeValue($item->getId(), 'condition')) : ?>
+                                <td data-th="<?= $block->escapeHtml(__('Resolution')) ?>" class="col resolution"><?= $block->escapeHtml($block->getAttributeValue($item->getId(), 'resolution')) ?></td>
+                            <?php endif; ?>
+                            <td data-th="<?= $block->escapeHtml(__('Request Qty')) ?>" class="col request qty"><?= $block->escapeHtml($rmaHelper->parseQuantity($item->getQtyRequested(), $item)) ?></td>
+                            <td data-th="<?= $block->escapeHtml(__('Qty')) ?>" class="col qty"><?= $block->escapeHtml($rmaHelper->getQty($item)) ?></td>
+                            <td data-th="<?= $block->escapeHtml(__('Status')) ?>" class="col status"><?= $block->escapeHtml($item->getStatusLabel()) ?></td>
+                        </tr>
+                        <?php if ($_qna) : ?>
+                            <tr id="shf_<?= /* @escapeNotVerified */ $key ?>" class="hidden">
+                                <td colspan="7">
+                                    <table class="data table">
+                                        <caption class="table-caption"><?= /* @escapeNotVerified */ __('Questions and Answers') ?></caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="col questions"><?= /* @escapeNotVerified */ __('Questions') ?></th>
+                                                <th class="col answers"><?= /* @escapeNotVerified */ __('Answers') ?></th>
+                                            </tr>
+                                        </thead>
+                                        <?= /* @escapeNotVerified */ $_qna ?>
+                                    </table>
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>

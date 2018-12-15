@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Bss Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   Bss
+ * @package    Bss_TimeCountdown
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 Bss Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="bss_timecountdown" class="Bss\TimeCountdown\Block\Widget\TimeCountdown">
+        <label>BSS Time Countdown (Countdown Clock)</label>
+        <description translate="true">Display Timercountdown</description>
+        <parameters>
+
+            <parameter name="enable_widget_time" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label>Enable Widget</label>
+            </parameter>
+
+            <parameter name="enable_start_time" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label>Enable Start Time Countdown</label>
+            </parameter>
+
+            <parameter name="from_date" xsi:type="block" visible="true">
+                <label>Start Date</label>
+                <description translate="true">Choose the starting date of your promotion. The Start Time Countdown Clock will be displayed before and stop at that date. Ex: Start date = May 6, the clock will be shown from May 4 to May 6.</description>
+                <block class="Bss\TimeCountdown\Model\Config\Source\DatePicker"/>
+            </parameter>
+
+            <parameter name="enable_mess_start" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label>Use Time Countdown Message</label>
+            </parameter>
+
+            <parameter name="mess_start" xsi:type="text"  visible="true">
+                <label>Time Countdown Message</label>
+                <depends>
+                    <parameter name="enable_mess_start" value="1" />
+                </depends>
+            </parameter>
+
+            <parameter name="font_size_start" xsi:type="text"  visible="true">
+                <label>Font Size of Message</label>
+                <depends>
+                    <parameter name="enable_mess_start" value="1" />
+                </depends>
+            </parameter>
+
+            <parameter name="font_color_start" xsi:type="block" visible="true">
+                <label>Color of Message</label>
+                <block class="Bss\TimeCountdown\Model\Config\Source\Widget\ColorPicker"/>
+            </parameter>
+
+
+            <parameter name="style_start_stime" xsi:type="select" visible="true"
+                       source_model="Bss\TimeCountdown\Model\Config\Source\Widget\StyleDisplay">
+                <label>Time Countdown Style</label>
+            </parameter>
+
+
+            <parameter name="enable_end_time" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label>Enable End Time Countdown</label>
+            </parameter>
+
+            <parameter name="to_date" xsi:type="block" visible="true">
+                <label>End Date</label>
+                <description translate="true">Choose the ending date of your promotion. The End Time Countdown Clock will be displayed from the starting day to that date. Ex: Start date = May 6, End date = May 9, the clock will be shown from May 6 to May 9.</description>
+                <block class="Bss\TimeCountdown\Model\Config\Source\DatePicker"/>
+            </parameter>
+
+            <parameter name="enable_mess_end" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label>Use Time Countdown Message</label>
+            </parameter>
+
+            <parameter name="mess_end" xsi:type="text"  visible="true">
+                <label>Time Countdown Message</label>
+                <depends>
+                    <parameter name="enable_mess_end" value="1" />
+                </depends>
+            </parameter>
+
+            <parameter name="font_size_end" xsi:type="text"  visible="true">
+                <label>Font Size of Message</label>
+                <depends>
+                    <parameter name="enable_mess_end" value="1" />
+                </depends>
+            </parameter>
+
+            <parameter name="font_color_end" xsi:type="block" visible="true">
+                <label>Color of Message</label>
+                <block class="Bss\TimeCountdown\Model\Config\Source\Widget\ColorPicker"/>
+            </parameter>
+
+            <parameter name="style_end_stime" xsi:type="select" visible="true"
+                       source_model="Bss\TimeCountdown\Model\Config\Source\Widget\StyleDisplay">
+                <label>Time Countdown Style</label>
+            </parameter>
+
+
+        </parameters>
+    </widget>
+
+
+    <widget id="bss_timecountdown_list_product_onsale" class="Bss\TimeCountdown\Block\Widget\ProductListOnSale">
+        <label>BSS Time Countdown (End Time - On Sale Product List)</label>
+        <description translate="true">Display list product have timercountdown</description>
+        <parameters>
+
+            <parameter name="enable_widget_list_onsale" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label>Enable Widget</label>
+            </parameter>
+
+            <parameter name="title_list_product_onsale" xsi:type="text" required="false" visible="true">
+                <label>Title</label>
+            </parameter>
+
+            <parameter name="show_slide_onsale" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label>Show Product Slider</label>
+            </parameter>
+
+            <parameter name="products_per_slide_onsale" xsi:type="text" required="true" visible="true">
+                <label>Number of Products Per Slide</label>
+                <depends>
+                    <parameter name="show_slide_onsale" value="1" />
+                </depends>
+                <value>5</value>
+            </parameter>
+
+            <parameter name="time_auto_slide_onsale" xsi:type="text" required="true" visible="true">
+                <label>Auto Slide Time (seconds)</label>
+                <description translate="true">If enter 0 or leave this field blank, the auto slide is disabled</description>
+                <depends>
+                    <parameter name="show_slide_onsale" value="1" />
+                </depends>
+                <value>0</value>
+            </parameter>
+
+            <parameter name="show_pager" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label>Display Page Control</label>
+                <depends>
+                    <parameter name="show_slide_onsale" value="0" />
+                </depends>
+            </parameter>
+            <parameter name="products_per_page" xsi:type="block" required="true" visible="true">
+                <label>Number of Products Per Page</label>
+                <depends>
+                    <parameter name="show_pager" value="1" />
+                </depends>
+                <block class="Bss\TimeCountdown\Model\Config\Source\Widget\DepenShowSlideOnSale"/>
+            </parameter>
+            <parameter name="products_count" xsi:type="text" required="true" visible="true">
+                <label>Number of Products to Display</label>
+                <value>10</value>
+            </parameter>
+        </parameters>
+    </widget>
+
+    <widget id="bss_timecountdown_list_product_comming_sale" class="Bss\TimeCountdown\Block\Widget\ProductListUpCommingSale">
+        <label>BSS Time Countdown (Start Time - Upcoming Sale Product List)</label>
+        <description translate="true">Display list product comming sale</description>
+        <parameters>
+
+            <parameter name="enable_widget_list_comming_sale" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label>Enable Widget</label>
+            </parameter>
+
+            <parameter name="title_list_product_comming_sale" xsi:type="text" required="false" visible="true">
+                <label>Title</label>
+            </parameter>
+
+
+            <parameter name="show_slide" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label>Show Product Slider</label>
+            </parameter>
+
+            <parameter name="products_per_slide" xsi:type="text" required="true" visible="true">
+                <label>Number of Products Per Slide</label>
+                <depends>
+                    <parameter name="show_slide" value="1" />
+                </depends>
+                <value>5</value>
+            </parameter>
+
+            <parameter name="time_auto_slide" xsi:type="text" required="true" visible="true">
+                <label>Auto Slide Time (seconds)</label>
+                <description translate="true">If enter 0 or leave this field blank, the auto slide is disabled</description>
+                <depends>
+                    <parameter name="show_slide" value="1" />
+                </depends>
+                <value>0</value>
+            </parameter>
+
+            <parameter name="show_pager" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label>Display Page Control</label>
+                <depends>
+                    <parameter name="show_slide" value="0" />
+                </depends>
+            </parameter>
+            <parameter name="products_per_page" xsi:type="block"  visible="true">
+                <label>Number of Products Per Page</label>
+                <depends>
+                    <parameter name="show_pager" value="1" />
+                </depends>
+                <block class="Bss\TimeCountdown\Model\Config\Source\Widget\DepenShowSlideCommingSale"/>
+            </parameter>
+            <parameter name="products_count" xsi:type="text" required="true" visible="true">
+                <label>Number of Products to Display</label>
+                <value>10</value>
+            </parameter>
+
+        </parameters>
+    </widget>
+
+</widgets>

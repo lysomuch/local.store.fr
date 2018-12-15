@@ -1,0 +1,69 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$scopeConfig = $objectManager->get('\Magento\Framework\App\Config\ScopeConfigInterface');
+$customerSession = $objectManager->create('\Magento\Customer\Model\Session');
+?>
+
+<div class="panel-header">
+    <div class="left-text">
+        <span>
+ <?= $scopeConfig->getValue(
+                    'cms/header_single_row_text/shopping_tips',
+                    \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            ); ?>        
+</span>
+    </div>
+    <div class="right-content">
+        <div id="extend-info">
+            <a href="<?= $this->getUrl("wishlist/") ?>" class="extend-wish" data-bind="scope: 'wishlist'">
+                <!-- ko if: wishlist().counter -->
+                <span style="display: none" data-bind="text: parseInt(wishlist().counter),style: { display:wishlist().counter?'block':'none' }"></span>
+                <!-- /ko -->
+            </a>
+            <script type="text/x-magento-init">
+            {
+                "*": {
+                    "Magento_Ui/js/core/app": {
+                        "components": {
+                            "wishlist": {
+                                "component": "Magento_Wishlist/js/view/wishlist"
+                            }
+                        }
+                    }
+                }
+            }
+            </script>
+
+            <a href="<?= $this->getUrl("catalog/product_compare/index") ?>" class="extend-compare" data-bind="scope: 'compareProducts'">
+                <!-- ko if: parseInt(compareProducts().countCaption) -->
+                <span style="display: none" data-bind="text: parseInt(compareProducts().countCaption),style: { display:compareProducts().countCaption?'block':'none' }"></span>
+                <!-- /ko -->
+            </a>
+            <script type="text/x-magento-init">
+            {"[data-role=compare-products-link]": {"Magento_Ui/js/core/app": <?= /* @escapeNotVerified */ $block->getJsLayout() ?>}}
+            </script>
+			
+        </div>
+		<div class="mg-default">
+			<?php echo $block->getChildHtml('minicart') ?>
+			  <div class="account-content">
+                <span class="account-icon"><?= $block->escapeHtml(__('My Account')) ?></span>
+                <span class="account-name"></span>
+                <?php echo $block->getChildHtml('top.links') ?>
+            </div>
+		</div>
+         <!--
+        <div class="phone-info">
+            <span><?= $scopeConfig->getValue(
+                    'general/store_information/phone',
+                    \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+                ); ?></span>
+        </div>
+		-->
+
+    </div>
+</div>
+<script>
+    var isLoggedIn = <?php if ($customerSession->isLoggedIn()): ?>1<?php else:?>0<?php endif; ?>
+
+</script>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- /** * @author Amasty Team * @copyright Copyright (c) 2015 Amasty (http://www.amasty.com) * @package Amasty_HelloWorld */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system> 
+		<tab id="idevaffiliate" translate="label" sortOrder="10">
+            <label>iDevAffiliate</label>
+        </tab>
+		<section id="idevaffiliate" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>iDevAffiliate</label>
+            <tab>idevaffiliate</tab>
+            <resource>Idevaffiliate_Idevaffiliate::idevaffiliate_idevaffiliate</resource>
+            <group id="idevaffiliate" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>iDevAffiliate</label>                
+                <field id="idev_tracking_url" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>iDevAffiliate Installation URL</label>
+					<comment>Example: http://www.yoursite.com/idevaffiliate/</comment>
+                </field>
+            </group>
+        </section> 
+    </system>
+</config>

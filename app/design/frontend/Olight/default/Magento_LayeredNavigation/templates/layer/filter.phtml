@@ -1,0 +1,42 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Template for filter items block
+ *
+ * @var $filterItem \Magento\Catalog\Model\Layer\Filter\Item
+ * @var $block \Magento\LayeredNavigation\Block\Navigation\FilterRenderer
+ */
+?>
+
+<ol class="items">
+    <li class="item<?php if (!$selectValue): ?> active<?php endif; ?>">
+        <a href="<?php echo $allUrl; ?>"><?= /* @escapeNotVerified */__('All') ?></a>
+    </li>
+    <?php foreach ($filterItems as $filterItem): ?>
+        <li class="item<?php if ($selectValue && $selectValue == $filterItem->getValue()): ?> active<?php endif; ?>">
+            <?php if ($filterItem->getCount() > 0): ?>
+                <a href="<?= $block->escapeUrl($filterItem->getUrl()) ?>" data-number="<?php echo $filterItem->getCount() ?>">
+                    <?= /* @escapeNotVerified */ $filterItem->getLabel() ?>
+                    <?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()): ?>
+                        <span class="count"><?= /* @escapeNotVerified */ $filterItem->getCount() ?><span class="filter-count-label">
+                            <?php if ($filterItem->getCount() == 1):?> <?= /* @escapeNotVerified */ __('item') ?><?php else:?> <?= /* @escapeNotVerified */ __('items') ?><?php endif;?></span></span>
+                    <?php endif; ?>
+                </a>
+            <?php else:?>
+                <?= /* @escapeNotVerified */ $filterItem->getLabel() ?>
+                <?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()): ?>
+                    <span class="count"><?= /* @escapeNotVerified */ $filterItem->getCount() ?><span class="filter-count-label">
+                        <?php if ($filterItem->getCount() == 1):?><?= /* @escapeNotVerified */ __('item') ?><?php else:?><?= /* @escapeNotVerified */ __('items') ?><?php endif;?></span></span>
+                <?php endif; ?>
+            <?php endif; ?>
+        </li>
+    <?php endforeach ?>
+</ol>

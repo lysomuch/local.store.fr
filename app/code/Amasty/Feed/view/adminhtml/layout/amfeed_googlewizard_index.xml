@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Feed
+ */
+-->
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Amasty_Feed::feed/edit.css"/>
+    </head>
+    <body>
+        <referenceContainer name="left">
+            <block class="Amasty\Feed\Block\Adminhtml\GoogleWizard\Edit\Tabs" name="googlewizard_tabs">
+                <block class="Amasty\Feed\Block\Adminhtml\GoogleWizard\Edit\Tab\Categories" name="amasty_feed_setup_googlewizard_tab_categories" />
+
+                <block class="Amasty\Feed\Block\Adminhtml\GoogleWizard\Edit\Tab\Basic" name="amasty_feed_setup_googlewizard_feed_tab_basic" />
+
+                <block class="Amasty\Feed\Block\Adminhtml\GoogleWizard\Edit\Tab\Optional" name="amasty_feed_setup_googlewizard_feed_tab_optional" />
+
+                <block class="Amasty\Feed\Block\Adminhtml\GoogleWizard\Edit\Tab\Delivery" name="amasty_feed_setup_googlewizard_feed_tab_delivery" />
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">googlewizard_tab_categories</argument>
+                    <argument name="block" xsi:type="string">amasty_feed_setup_googlewizard_tab_categories</argument>
+                </action>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">googlewizard_feed_tab_basic</argument>
+                    <argument name="block" xsi:type="string">amasty_feed_setup_googlewizard_feed_tab_basic</argument>
+                </action>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">googlewizard_feed_tab_optional</argument>
+                    <argument name="block" xsi:type="string">amasty_feed_setup_googlewizard_feed_tab_optional</argument>
+                </action>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">googlewizard_feed_tab_delivery</argument>
+                    <argument name="block" xsi:type="string">amasty_feed_setup_googlewizard_feed_tab_delivery</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Amasty\Feed\Block\Adminhtml\GoogleWizard\Edit" name="googlewizard_edit"/>
+        </referenceContainer>
+    </body>
+</page>

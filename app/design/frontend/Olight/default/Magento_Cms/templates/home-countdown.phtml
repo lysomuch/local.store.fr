@@ -1,0 +1,51 @@
+<?php
+$timezone     = $this->getLocaleTimezone();
+$timerEnable  = $this->getTimerEnable();
+$beginDate    = $this->getTimerBeginDate();
+$endDate      = $this->getTimerEndDate();
+$timerMessage = $this->getTimerMessage();
+$showTimer    = false;
+if ($beginDate && $endDate && $timerMessage) {
+	list($msgBegin,$msgEnd) = explode(',',$timerMessage);
+    $showTimer = true;
+}
+?>
+<?php if ($timerEnable && $showTimer): ?>
+	<div class="contdown-area">
+		<div class="contdown-box">
+			<div class="title teddy"><?php echo $msgBegin.'_'.$msgEnd; ?></div>
+			<div id="element"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	 require(['jquery','countdown','moment','timezone'],function($) {  
+		require(['timezone'], function (moment) {
+			var timezone =  '<?php echo $timezone;?>';
+            var beginDate =  '<?php echo $beginDate;?>';
+            var endDate =  '<?php echo $endDate;?>';
+			var startdate = moment.tz(beginDate, timezone);
+			var enddate = moment.tz(endDate, timezone);
+			var olcue = moment.tz(new Date(),timezone);
+			var	startdateTime = (new Date(startdate)).getTime();
+			var	olcueTime = (new Date(olcue)).getTime();
+			if( olcueTime <= startdateTime) {
+		        jQuery("#element").countdown(startdate.toDate(), function(event) {
+						 jQuery(".contdown-box .title").html('<?php echo $msgBegin; ?>');
+		            jQuery(this).html(
+		                    event.strftime('<div class="item"><span class="sum">%D</span><span class="text"><?= $block->escapeHtml(__('Days')) ?></span></div><div class="item"><span class="sum">%H</span><span class="text"><?= $block->escapeHtml(__('Hour')) ?></span></div><div class="item"><span class="sum">%M</span><span class="text"><?= $block->escapeHtml(__('Minute')) ?></span></div><div  class="item"><span class="sum">%S</span> <span class="text"><?= $block->escapeHtml(__('Second')) ?></span></div>')
+		            );
+		        });
+
+		    }
+			if(olcueTime >= startdateTime) {
+				jQuery("#element").countdown(enddate.toDate(), function(event) {
+					 jQuery(".contdown-box .title").html('<?php echo $msgEnd; ?>');
+		            jQuery(this).html(
+		                    event.strftime('<div class="item"><span class="sum sumends">%D</span><span class="text"><?= $block->escapeHtml(__('Days')) ?></span></div><div class="item"><span class="sum sumends">%H</span><span class="text"><?= $block->escapeHtml(__('Hour')) ?></span></div><div class="item"><span class="sum sumends">%M</span><span class="text"><?= $block->escapeHtml(__('Minute')) ?></span></div><div  class="item"><span class="sum sumends">%S</span> <span class="text"><?= $block->escapeHtml(__('Second')) ?></span></div>')
+		            );
+		        });
+			}
+		});  
+	});  
+	</script> 
+<?php endif; ?>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <sales_email>
+            <abandoned_cart_email>
+                <interval_days>7</interval_days>
+            </abandoned_cart_email>
+
+            <birthday_reminder_email>
+                <days_in_advance>3</days_in_advance>
+            </birthday_reminder_email>
+
+            <order_review_email>
+                <interval_days>14</interval_days>
+            </order_review_email>
+
+            <payment_reminder_email>
+                <interval_minutes>120</interval_minutes>
+            </payment_reminder_email>
+        </sales_email>
+    </default>
+</config>

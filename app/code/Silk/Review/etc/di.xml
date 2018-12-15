@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="catalog_shell" xsi:type="object">Silk\Review\Console\Command\Review</item>
+            </argument>
+        </arguments>
+    </type>
+    <!--<preference for="Magento\Review\Model\ResourceModel\Rating\Option" type="Silk\Review\Model\ResourceModel\Rating\Option" />-->
+</config>

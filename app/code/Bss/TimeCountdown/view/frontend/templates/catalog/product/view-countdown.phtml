@@ -1,0 +1,40 @@
+<?php
+$productId = $this->getRequest()->getParam('id');
+//判断该产品是否属于指定timer类目
+//$isExist = $this->isProductInCatalog($productId);
+$isExist = false;//目前在产品详情页面，不要这个倒计时
+?>
+<?php if ($isExist) : ?>
+    <?php if ($infoDisplayProduct = $block->getInfoDisplay()) : ?>
+        <?php $k = $block->getRandomKey(); ?>
+        <input type="hidden" class="product-id-bss-time" value="<?= $infoDisplayProduct['product_id'] . $k ?>"/>
+        <input type="hidden" id="time-product-bss-<?= $infoDisplayProduct['product_id'] . $k ?>"/>
+        <p class="message-catalog-<?= $infoDisplayProduct['type'] ?>-bss-style1 message-bss-<?= $infoDisplayProduct['product_id'] . $k ?>"
+            style="<?= $infoDisplayProduct['font_size'] ?>; <?= $infoDisplayProduct['color'] ?>">
+            <?= $infoDisplayProduct['message'] ?>
+        </p>
+        <span class="timer-bss-style-<?= $infoDisplayProduct['style'] ?> timer-countdown-bss-<?= $infoDisplayProduct['product_id'] . $k ?> product"></span>
+        <div class='discount-bss-time-countdown'>
+            <p style="margin-bottom: 0px;<?= $infoDisplayProduct['corlorMessSaleValue'] ?>;<?= $infoDisplayProduct['fontSizeMessSaleValue'] ?>">
+              <?= $infoDisplayProduct['messSaleValue'] ?>
+                 <span class="sale-value"><?= $infoDisplayProduct['sale_value'] ?></span>
+            </p>
+            <p style='<?= $infoDisplayProduct['corlorMessSalePercent'] ?>; <?= $infoDisplayProduct['fontSizeMessSalePercent'] ?>'>
+                <?= $infoDisplayProduct['messSalePercent'] ?>
+                <span>(<?= $infoDisplayProduct['percent_discount'] ?>)</span>
+            </p>
+        </div>
+        <script type="text/x-magento-init">
+            {
+                "#time-product-bss-<?= $infoDisplayProduct['product_id'] . $k ?>":{
+                    "Bss_TimeCountdown/js/timer":{
+                        "selector": ".timer-countdown-bss-<?= $infoDisplayProduct['product_id'].$k ?>",
+                        "productId": "<?= $infoDisplayProduct['product_id'] ?>",
+                        "ajaxUrl": "<?= $block->getUrl('timecountdown/ajax/timer') ?>",
+                        "type": "product"
+                    }
+                }
+            }
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

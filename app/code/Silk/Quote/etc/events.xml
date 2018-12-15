@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_quote_collect_totals_before">
+        <observer name="sales_quote_collect_before_validation" instance="Silk\Quote\Model\Observer\SalesQuoteValidationObserver" />
+    </event>
+    <event name="sales_quote_save_after">
+        <observer name="sales_quote_save_add_gift" instance="Silk\Quote\Model\Observer\SalesQuoteAddGiftObserver" />
+    </event>
+    <event name="checkout_submit_all_after">
+        <observer name="sales_success_change_customer" instance="Silk\Quote\Model\Observer\SalesSuccessChangeCustomerObserver" />
+    </event>
+    <event name="sales_model_service_quote_submit_before">
+        <observer name="quote_submit_to_order" instance="Silk\Quote\Model\Observer\QuoteSubmitToOrderObserver" />
+    </event>
+</config>

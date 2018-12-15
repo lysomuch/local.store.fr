@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <cms>
+            <facebook_wall_post>
+                <limit_number>2</limit_number>
+                <page_url>https://www.facebook.com/olightworld</page_url>
+            </facebook_wall_post>
+        </cms>
+    </default>
+</config>

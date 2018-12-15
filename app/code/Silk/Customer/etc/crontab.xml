@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ * Author daniel luo (luo3555@qq.com)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="auto_assigned_group" instance="Silk\Customer\Model\Observer\Cron" method="assigned">
+            <schedule>59 23 * * *</schedule>
+        </job>
+    </group>
+</config>

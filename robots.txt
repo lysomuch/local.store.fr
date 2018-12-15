@@ -1,0 +1,24 @@
+User-agent: *
+Disallow: /index.php/
+Disallow: /checkout/
+Disallow: /app/
+Disallow: /lib/
+Disallow: /pkginfo/
+Disallow: /report/
+Disallow: /var/
+Disallow: /catalog/
+Disallow: /customer/
+Disallow: /sendfriend/
+Disallow: /review/
+
+User-agent: Googlebot
+Disallow:
+
+User-agent: AdsBot-Google
+Disallow:
+
+User-agent: Googlebot-Image
+Disallow:
+
+User-agent: Googlebot-mobile
+Disallow: 

@@ -1,0 +1,32 @@
+<?php if ($block->checkCookie()): ?>
+<script type="text/javascript">
+//<![CDATA[
+require([
+	'jquery',
+	'mage/cookies'
+], function($) {
+	"use strict";
+
+	var affPrefix = '<?php echo $block->getPrefix() ?>';
+    if (affPrefix === '') {
+        affPrefix = 'u';
+    }
+    var hash = window.location.hash;
+
+    var url_loading = location.href;
+    var url_standard = new URL(url_loading);
+    var parameter = url_standard.searchParams.get(affPrefix);
+
+    if (parameter != null) {
+        $.mage.cookies.set('<?php echo $block->getCookieName() ?>', parameter, {lifetime: <?php echo $this->getExpire() ?>});
+        var url = window.location.pathname.split('?')[0];
+    }
+
+    if (hash.indexOf(affPrefix) != -1) {
+        $.mage.cookies.set('<?php echo $block->getCookieName() ?>', hash.substr(affPrefix.length + 1), {lifetime: <?php echo $this->getExpire() ?>});
+        var url = window.location.href;
+    }
+});
+//]]>
+</script>
+<?php endif; ?>

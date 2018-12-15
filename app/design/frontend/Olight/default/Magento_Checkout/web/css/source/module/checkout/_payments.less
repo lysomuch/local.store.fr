@@ -1,0 +1,706 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@checkout-payment-method-title__border: @checkout-shipping-method__border;
+@checkout-payment-method-title__padding: @checkout-shipping-method__padding;
+@checkout-payment-method-title-mobile__padding: 15px;
+
+@checkout-payment-method-content__padding__xl: 22px;
+
+@checkout-billing-address-details__line-height: 27px;
+@checkout-billing-address-details__padding: 0 0 0 23px;
+@checkout-billing-address-form__max-width: @checkout-shipping-address__max-width;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .checkout-payment-method {
+        .step-title {
+            border-bottom: 0;
+            margin-bottom: 0;
+        }
+        form.form{
+            .fieldset .payment-method-title{
+                label a{
+                    display: none;
+                }
+                &.field{
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .actions-toolbar .primary button.checkout{
+            position: absolute;
+            bottom: -50px;
+            right: 30px;
+            font-weight: @font-weight__regular;
+        }
+        .payment-method-box{
+            .lib-vendor-prefix-display();
+            justify-content: flex-start;
+            .payment-method{
+                border: 1px solid #d8d8d8;
+                padding: 10px 20px;
+                margin-right: 20px;
+                width: 26%;
+                //position: relative;
+                text-align: center;
+                cursor: pointer;
+                background: @colorFc;
+                font-size: unit(@font-size-unit-ratio * 1.6, px);
+                text-transform: uppercase;
+                color: @button-primary__hover__background;
+                &._active{
+                    border: 2px solid #80c9d3;
+                    background: none;
+                    &:before{
+                        font-family: 'icons-blank-theme';
+                        content: '\e610';
+                        font-size: unit(@font-size-unit-ratio * 2.2, px);
+                        color: @color-white;
+                        position: relative;
+                        top:0;
+                        right: -10px;
+                        background-color: @button-primary__hover__background;
+                        -webkit-border-radius:100%;
+                        -moz-border-radius:100%;
+                        border-radius:100%;
+                        display: block;
+                        width: 22px;
+                        height: 22px;
+                        line-height:22px;
+                        float: right;
+                    }
+                }
+                input{
+                    display: none;
+                }
+                .messages, .payment-method-billing-address{
+                    display: none;
+                }
+            }
+        }
+
+        .payment-method {
+            &:first-child {
+                .payment-method-title {
+                    border-top: 0;
+                }
+            }
+
+            &._active {
+                .payment-method-content {
+                    display: block;
+                }
+            }
+
+            & + .payment-method {
+                .payment-method-title {
+                    //.lib-css(border-top, @checkout-payment-method-title__border);
+                }
+            }
+        }
+
+        .payment-method-content {
+            > .actions-toolbar {
+                > .primary {
+                    .action {
+                        &.primary {
+                            &:extend(.abs-button-l all);
+                        }
+                    }
+                }
+            }
+        }
+
+        .payment-method-title {
+            //.lib-css(padding, @checkout-payment-method-title__padding 0);
+            margin: 0;
+            label{
+                padding: 12px 0;
+                cursor: pointer;
+                line-height: 50px;
+                span{
+                    //display: none;
+                }
+            }
+
+            .payment-icon {
+                display: inline-block;
+                margin-right: @indent__xs;
+                vertical-align: middle;
+            }
+
+            .action-help {
+                display: inline-block;
+                margin-left: @indent__xs;
+            }
+        }
+
+        .payment-method-content {
+            display: none;
+            //.lib-css(padding, 0 0 @indent__base @checkout-payment-method-content__padding__xl);
+            .fieldset {
+                &:not(:last-child) {
+                    margin: 0 0 @indent__base;
+                    display: none;
+                }
+            }
+        }
+
+        .payment-group {
+            & + .payment-group {
+                .step-title {
+                    margin: @indent__base 0 0;
+                }
+            }
+        }
+
+        .field-select-billing,
+        .billing-address-form {
+            .lib-css(max-width, @checkout-billing-address-form__max-width);
+        }
+
+        .billing-address-same-as-shipping-block {
+            margin: 0 0 @indent__s;
+        }
+
+        .checkout-billing-address {
+            margin: 0 0 @indent__base;
+
+            .primary {
+                .action-update {
+                    margin-right: 0;
+                }
+            }
+
+            .action-cancel {
+                &:extend(.abs-action-button-as-link all);
+            }
+
+            .billing-address-details {
+                .lib-css(line-height, @checkout-billing-address-details__line-height);
+                .lib-css(padding, @checkout-billing-address-details__padding);
+            }
+        }
+
+        .payment-method-note {
+            & + .checkout-billing-address {
+                margin-top: @indent__base;
+            }
+        }
+
+        .field-select-billing {
+            > .label {
+                &:extend(.abs-visually-hidden all);
+            }
+        }
+
+        .payment-method-iframe {
+            background-color: transparent;
+            display: none;
+            width: 100%;
+        }
+
+        .no-payments-block {
+            margin: @indent__base 0;
+        }
+
+        .payments {
+            .legend {
+                &:extend(.abs-visually-hidden all);
+            }
+        }
+    }
+
+    .products-grid.wishlist {
+        @media only screen and (min-width: 768px) {
+            .product-item-name {
+                width: 80%;
+            }
+        }
+
+    }
+
+    .product-item {
+        .minimal-price {
+            .old-price {
+                .price-wrapper {
+                    .price {
+                        font-size: 14px;
+                        color: #ddd;
+                        vertical-align: sub;
+                    }
+                }
+
+            }
+        }
+    }
+
+    .product-info-main {
+        .box-tocart {
+            .actions {
+                .tocart {
+                    width: 50%!important;
+                    line-height: 1;
+                }
+                a {
+                    width: 25%;
+                    margin-right: 10px;
+                    padding: 5px 8px;
+                    line-height: 1;
+                    font-weight: normal;
+
+                    &.tocompare {
+                        &:hover {
+                            background: #e2e2e2;
+                            border: 1px solid #cdcdcd;
+                            color: #555555;
+                        }
+                    }
+
+                    @media only screen and (max-width: 767px) {
+                        width: 35%;
+                    }
+                }
+            }
+        }
+        .price-box {
+            .price-wrapper {
+                &.init-price {
+                    .price {
+                        font-size: 20px;
+                        color: #ddd;
+                        text-decoration: line-through;
+
+                        @media only screen and (max-width: 767px) {
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
+            }
+
+            .price-final_price {
+                .old-price {
+                    .price-wrapper {
+                        .price {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+        .product-add-form {
+            .accessories_product {
+                img {
+                    max-width: 70px;
+                }
+            }
+        }
+        .product-info-price {
+            .old-price {
+                .price-wrapper  {
+                    .price {
+                        font-size: 24px !important;
+
+                        @media only screen and (max-width: 767px) {
+                            font-size: 1.4rem !important;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    .product-main-infor-box {
+        .product-info-main {
+            .box-tocart {
+                .actions {
+                    a {
+                        @media only screen and (max-width: 767px) {
+                            line-height: 1.5 !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .catalog-product-view {
+        .product-add-form {
+            .accessories_product {
+                .price-box {
+                    [data-price-type="oldPrice"] {
+                        display: block !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .block-search {
+        .minisearch {
+            &.active {
+                @media (max-width: 767px) {
+                    position: relative;
+                }
+
+                .label {
+                    &.active {
+                        +.control {
+                            input {
+                                @media (max-width: 767px) {
+                                    position: relative!important;
+                                    z-index: 1000;
+                                    left: auto;
+                                    right: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    #olight-nav {
+        .menu-list {
+            .root-list {
+                .product-name {
+                    display: -webkit-box;
+                    overflow: hidden;
+                    white-space: normal!important;
+                    text-overflow: ellipsis;
+                    word-wrap: break-word;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                }
+            }
+        }
+    }
+
+    .page-main {
+        .block {
+            &.social-login-authentication-channel {
+                &.account-social-login {
+                    width: 100%;
+
+                    .block-content {
+                        width: 100%;
+                        text-align: left;
+
+                        .actions-toolbar {
+
+                            &:nth-child(2n+1) {
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .form-create-account {
+            .social-login-authentication-channel {
+                margin-top: 20px;
+            }
+        }
+
+        .product-item {
+            .product-item-info {
+                overflow: hidden;
+            }
+
+            .info-popup {
+                position: absolute;
+                bottom: -100px;
+                left: 0;
+                width: 100%;
+                padding: 6px 0;
+                transition: bottom .3s ease;
+                background: rgba(0, 0, 0, .7);
+                color: #fff;
+            }
+        }
+
+        .box-static {
+            .shipping,
+            .history {
+                a {
+                    color: #006271;
+                }
+            }
+        }
+
+        .btn-google .fa-google {
+            background: none;
+
+            &:before {
+                content: "\f1a0";
+            }
+        }
+
+    }
+
+
+    .flashsales-view-index .flash_unstart .flash_unstart_live {
+        .live-review {
+            width: 505px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .item-right {
+            padding-left: 10px;
+        }
+    }
+
+
+    .pc-banner {
+        .banner-down-button {
+            -webkit-animation: xguide_down 4.0s infinite ease-in-out;
+            -moz-animation: xguide_down 4.0s infinite ease-in-out;
+            -o-animation: xguide_down 4.0s infinite ease-in-out;
+            animation: xguide_down 4.0s infinite ease-in-out;
+            -webkit-animation-delay: -2.0s;
+            -moz-animation-delay: -2.0s;
+            -o-animation-delay: -2.0s;
+            animation-delay: -2.0s;
+        }
+    }
+}
+
+@keyframes xguide_down{
+    0%,100%{
+        -moz-transform:scale(0.8);
+        -o-transform:scale(0.8);
+        -webkit-transform:scale(0.8);
+        -ms-transform:scale(0.8);
+        transform:scale(0.8);
+        opacity:0.6
+    }
+    50%{
+        transform:scale(1.0);
+        -moz-transform:scale(1.0);
+        -o-transform:scale(1.0);
+        -webkit-transform:scale(1.0);
+        -ms-transform:scale(1.0);
+        opacity:1
+    }
+
+}
+@-webkit-keyframes xguide_down{
+    0%,100%{
+        -moz-transform:scale(0.8);
+        -o-transform:scale(0.8);
+        -webkit-transform:scale(0.8);
+        -ms-transform:scale(0.8);
+        transform:scale(0.8);
+        opacity:0.6
+    }
+    50%{
+        -webkit-transform:scale(1.0);
+        -moz-transform:scale(1.0);
+        -o-transform:scale(1.0);
+        -ms-transform:scale(1.0);
+        transform:scale(1.0);
+        opacity:1
+    }
+
+}
+@-moz-keyframes xguide_down{
+    0%,100%{
+        -moz-transform:scale(0.8);
+        -o-transform:scale(0.8);
+        -webkit-transform:scale(0.8);
+        -ms-transform:scale(0.8);
+        transform:scale(0.8);
+        opacity:0.6
+    }
+    50%{
+        -moz-transform:scale(1.0);
+        -o-transform:scale(1.0);
+        -webkit-transform:scale(1.0);
+        -ms-transform:scale(1.0);
+        transform:scale(1.0);
+        opacity:1
+    }
+
+}
+@-o-keyframes xguide_down{
+    0%,100%{
+        -moz-transform:scale(0.8);
+        -o-transform:scale(0.8);
+        -webkit-transform:scale(0.8);
+        -ms-transform:scale(0.8);
+        transform:scale(0.8);
+        opacity:0.6
+    }
+    50%{
+        -o-transform:scale(1.0);
+        -moz-transform:scale(1.0);
+        -webkit-transform:scale(1.0);
+        -ms-transform:scale(1.0);
+        transform:scale(1.0);
+        opacity:1
+    }
+
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .checkout-payment-method {
+        position: relative;
+        .payment-methods {
+
+        }
+        .payment-method-box{
+            display: block;
+            .payment-method{
+                width: 80%;
+                margin: 0 auto 20px auto;
+                padding: 0;
+                label span{
+                    display: block;
+                    position: relative;
+                    left: 10px;
+                }
+                &._active:before{
+                    right: 5px;
+                    top: 5px;
+                }
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .payment-method-title {
+            //.lib-css(padding, @checkout-payment-method-title-mobile__padding)
+        }
+
+        .payment-method-content {
+            //.lib-css(padding, 0 @checkout-payment-method-title-mobile__padding @indent__base);
+        }
+
+        .checkout-billing-address {
+            .action-cancel {
+                margin-top: @indent__s;
+            }
+        }
+    }
+    .opc-wrapper{
+        .form-discount .actions-toolbar .primary .action{
+            font-size: unit(@font-size-unit-ratio * 1.4, px);
+            line-height: 40px;
+            height: 40px;
+        }
+        .form-giftcard-account .actions-toolbar .action{
+            font-size: unit(@font-size-unit-ratio * 1.4, px);
+            line-height: 40px;
+            height: 40px;
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__1200) {
+    .checkout-payment-method .payment-method-box .payment-method{
+        padding: 0;
+        width: 30%;
+        margin-right: 10px;
+        &:last-child{
+            margin-right: 0;
+        }
+        label{
+            font-size: unit(@font-size-unit-ratio * 1.4, px);
+        }
+        &._active{
+            &:before{
+                right: 5px;
+                top: 5px;
+            }
+            label span{
+                position: relative;
+                left: 10px;
+            }
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__980) {
+
+   .opc-wrapper .checkout-payment-method .payment-method-box .payment-method{
+        width: 40%;
+        margin-right: 20px;
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .checkout-payment-method {
+
+        .actions-toolbar {
+            .primary {
+                margin: 0;
+
+            }
+        }
+
+        .fieldset {
+            > .field-select-billing {
+                > .control {
+                    float: none;
+                    width: 100%;
+                }
+            }
+        }
+
+        .payment-method-content {
+            .fieldset {
+                > .field {
+                    margin: 0 0 @indent__base;
+
+                    &.type {
+                        .control {
+                            margin-left: 25.8%;
+                        }
+
+                        &.no-detection {
+                            .control {
+                                margin-left: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .checkout-billing-address {
+        .action-update {
+            float: right;
+        }
+
+        .actions-toolbar {
+            .action-cancel {
+                margin: 6px @indent__base 0 0;
+            }
+        }
+    }
+}

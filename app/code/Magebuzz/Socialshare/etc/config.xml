@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.magebuzz.com
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<socialshare>
+			<facebook>
+				<enable_facebook>0</enable_facebook>
+				<display_onlylike>0</display_onlylike>
+				<display_facebook_count>0</display_facebook_count>
+			</facebook>
+			<googleplus>
+				<enable_google_plus>0</enable_google_plus>
+				<display_google_count>0</display_google_count>
+			</googleplus>
+			<twitter>
+				<enable_twitter>0</enable_twitter>
+			</twitter>
+			<pinitsharing>
+				<enable_pinit>0</enable_pinit>
+				<display_pinit_count>0</display_pinit_count>
+			</pinitsharing>
+		</socialshare>
+	</default>
+</config>

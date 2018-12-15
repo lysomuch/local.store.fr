@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/get_home_page_products" method="GET">
+        <service class="Silk\Webapi\Api\HomePageProductsInterface" method="get_home_page_products"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route url="/V1/get_categories_and_products" method="GET">
+        <service class="Silk\Webapi\Api\CategoriesAndProductsInterface" method="get_categories_and_products"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

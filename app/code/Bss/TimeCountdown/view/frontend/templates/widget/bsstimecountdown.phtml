@@ -1,0 +1,78 @@
+<?php
+/**
+ * Bss Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   Bss
+ * @package    Bss_TimeCountdown
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 Bss Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+
+?>
+<?php
+//  @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ *  Time Countdown template
+ *
+ * @var $block \Bss\TimeCountdown\Block\Widget\TimeCountdown
+ */
+?>
+<?php if ($block->isEnableModuleTimeCountdown() && $block->isEnableWidgetTime()): ?>
+<?php
+$timer = $this->getTypeTimer();
+
+$unique = $this->getUniqueKey();
+$message = '';
+$font_size = '';
+$color = '';
+$timeRest = '';
+$style = '';
+$enableMessStart = $this->enableMessStart();
+$enableMessEnd = $this->enableMessEnd();
+if($timer['type'] == 'start_time') {
+    if($enableMessStart) {
+        $message = $block->getMessStart();
+        $font_size = $block->getFontSizeStart();
+        $color = $block->getColorStart();
+    }
+    $style = $block->getStyleStart();
+    $timeRest = $timer['time_rest'];
+} else if($timer['type'] == 'end_time') {
+    if($enableMessEnd) {
+        $message = $block->getMessEnd();
+        $font_size = $block->getFontSizeEnd();
+        $color = $block->getColorEnd();
+    }
+    $style = $block->getStyleEnd();
+    $timeRest = $timer['time_rest'];
+}
+if($timeRest) {
+?>
+    <div class="countdown-box">
+    <div class="countdown-hd"><?php echo $message ?></div>
+    <span class="timer-countdown <?php echo $unique?>"></span>
+    <script type="text/x-magento-init">
+           {
+                "*":{
+                       "Bss_TimeCountdown/js/timer":{
+                           "selector": ".timer-countdown.<?php echo $unique ?>",
+                           "time": "<?= $timeRest ?>",
+                           "ajaxUrl": "<?= $block->getUrl('timecountdown/ajax/timer') ?>"
+                       }
+                }
+           }
+    </script>
+  </div>
+<?php } ?>
+<?php endif; ?>

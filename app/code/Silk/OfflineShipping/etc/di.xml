@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\OfflineShipping\Model\Carrier\Flatrate">
+        <plugin name="update_flatrate" type="Silk\OfflineShipping\Model\Carrier\Flatrate" sortOrder="1" />
+    </type>
+    <type name="Magento\OfflineShipping\Model\Carrier\Freeshipping">
+        <plugin name="update_freeshipping" type="Silk\OfflineShipping\Model\Carrier\Freeshipping" sortOrder="1" />
+    </type>
+</config>

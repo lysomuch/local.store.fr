@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Rma\Block\Returns\View */
+?>
+<?php
+    $_rma = $block->getRma();
+?>
+<span class="return-status"><?= $block->escapeHtml($_rma->getStatusLabel()) ?></span>
+<div>
+    <a class="action print" href="<?= $block->getUrl('rma/returns/prints/entity_id/' . $_rma->getEntityId() ) ?>" onclick="this.target='_blank';" target="_blank">
+        <span>Print Return</span>
+    </a>
+</div>
+

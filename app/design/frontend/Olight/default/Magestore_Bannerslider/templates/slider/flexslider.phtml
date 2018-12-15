@@ -1,0 +1,45 @@
+<?php
+/** @var \Magestore\Bannerslider\Block\SliderItem $block */
+$styleSlide = $block->getSlider()->getStyleSlide();
+$slider = $block->getSlider();
+$htmlId   = $block->getFlexsliderHtmlId();
+$bannerCollection = $block->getBannerCollection();
+?>
+<div id="owl-demo" class="owl-carousel">
+<?php $i=0;foreach ($bannerCollection as $banner): ?>
+     <?php if ($styleSlide == \Magestore\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_TWO) : ?>
+  <div  class="item">
+  <a href="<?php echo $banner->getClickUrl() ?>" target="<?php echo $banner->getTargetValue() ?>" style="display:block;" data-mage-init='{"magestore/clickbanner": {"url": "<?php echo $this->getUrl("bannerslider/index/click") ?>", "slider_id": "<?php echo $banner->getSliderId() ?>", "banner_id": "<?php echo $banner->getId() ?>" }}' >
+  <img alt="<?php echo $banner->getImageAlt() ?>" src="<?php echo $block->getBannerImageUrl($banner) ?>"/>
+   </a>
+   </div>
+    <?php else : ?>
+  <div class="item">
+   <a href="<?php echo $banner->getClickUrl() ?>" target="<?php echo $banner->getTargetValue() ?>" style="display:block;" data-mage-init='{"magestore/clickbanner": {"url": "<?php echo $this->getUrl("bannerslider/index/click") ?>", "slider_id": "<?php echo $banner->getSliderId() ?>", "banner_id": "<?php echo $banner->getId() ?>" }}' >
+   <img alt="<?php echo $banner->getImageAlt() ?>"  src="<?php echo $block->getBannerImageUrl($banner) ?>"/>
+   </a>
+  </div>
+   <?php endif; ?>
+ <?php $i++ ;endforeach ?>
+</div>
+<?php if($i > 1) :?>
+<script>
+require(['jquery','owlcarousel'], function ($) {   
+		$('.owl-carousel').owlCarousel({
+		items: 1,
+		loop:true,
+		nav:true,
+		autoplay:true,
+		autoHeight: true,
+		singleItem:true,
+		navText: ["<",">"]
+ });
+});
+</script>
+	
+ <?php endif; ?>
+
+
+
+
+

@@ -1,0 +1,30 @@
+<div class="flash_unstart_email">
+    <div class="position-content">
+        <div class="email_title"><?= /* @escapeNotVerified */
+            __('Never miss a FLASH SALE') ?></div>
+        <div class="email_discretion">
+            <p><?= /* @escapeNotVerified */
+                __('Enter your email address we will let you about the 
+upcoming Olightstore.com flash sales and promotions. 
+Never miss a great deal again!') ?></p>
+        </div>
+        <label class="label" for="newsletter"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+        <form class="form subscribe"
+              novalidate
+              action="<?php echo $this->getUrl('newsletter/subscriber/new/') ?>"
+              method="post"
+              data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+              id="newsletter-validate-detail2">
+            <div class="field newsletter">
+                <div class="control">
+                    <input name="email" type="email" id="newsletter" data-validate="{required:true, 'validate-email':true}"/>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="action subscribe primary" title="<?= $block->escapeHtmlAttr(__('Subscribe')) ?>" type="submit">
+                    <span><?= $block->escapeHtml(__('Sign Up')) ?></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

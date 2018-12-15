@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\SalesRule\Model\Quote\Discount" type="Silk\Quote\Model\Quote\Discount" />
+    <preference for="Magento\Quote\Model\Cart\CartTotalRepository" type="Silk\Quote\Model\Cart\CartTotalRepository" />
+    <preference for="Magento\Quote\Model\Quote" type="Silk\Quote\Model\Quote" />
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="gift_quote_to_order_item" type="Silk\Quote\Model\Plugin\Quote\QuoteToOrderItem"/>
+    </type>
+</config>

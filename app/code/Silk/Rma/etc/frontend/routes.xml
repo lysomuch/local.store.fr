@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="silk_rma" frontName="silk_rma">
+            <module name="Silk_Rma" />
+        </route>
+        <route id="magento_rma"  frontName="rma">
+            <module name="Silk_Rma" after="Magento_Rma"/>
+        </route>
+    </router>
+</config>
